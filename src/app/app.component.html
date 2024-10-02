@@ -16,8 +16,7 @@
 .spacer {
     flex: 1 1 auto;
 }
-</style>
-
+</style> 
 <!-- NAVBAR -->
 <mat-toolbar color="primary" style="height: 75px; background-color: gray; padding: 0px 50px;">
   <span style="color: white;">Sistema Locadora</span>
@@ -40,7 +39,7 @@
     <div class="btn-container" style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
       
       <div class="btn-ator">
-        <button mat-button class="btn-side" style="color: white;">Ator</button>
+        <a href="/ator" mat-button class="btn-side" style="color: white;">Ator</a>
       </div>  
       <div class="btn-classe">
         <button mat-button class="btn-side" style="color: white;">Classe</button>
@@ -53,9 +52,10 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-
+    
     <h1>Bem-vindo ao Conteúdo Principal</h1>
-
+    <router-outlet />
+    
   </mat-sidenav-content>
 
 </mat-sidenav-container>
