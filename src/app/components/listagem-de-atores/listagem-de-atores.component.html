@@ -1,0 +1,40 @@
+<div class="container">
+    <mat-card>
+      <div class="headerTable">
+        <mat-card-title>Listagem de {{ tipo }}</mat-card-title>
+  
+      <a href="cadastroAtor" mat-fab style="background-color: white;">
+        Novo
+        <mat-icon style="color: black;">add_circle_outline</mat-icon>       
+      </a>
+      </div>
+
+      <mat-table [dataSource]="atores" class="mat-elevation-z8">
+        <!-- Coluna do nome do ator -->
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let ator" class="ator-nome"> 
+            {{ ator.nome }} 
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Coluna dos botões de ação -->
+        <ng-container matColumnDef="acoes">
+          <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+          <mat-cell *matCellDef="let ator" class="acoes">
+            <a href="/cadastroAtor" mat-icon-button color="primary" >
+              <mat-icon>edit</mat-icon>
+            </a>
+            <button mat-icon-button color="warn" (click)="excluirAtor(ator)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Header e linhas da tabela -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card>
+  </div>
+  

@@ -1,43 +1,25 @@
-
-<style>
-  .btn-side {
-    width: 300px;
-    font-size: larger;
-    transition: background-color 0.3s ease; 
-    padding: 30px 0px;
-    color: white;
-}
-
-.btn-side:hover {
-    background-color: black;
-    color: white;
-  }
-
-.spacer {
-    flex: 1 1 auto;
-}
-</style> 
 <!-- NAVBAR -->
-<mat-toolbar color="primary" style="height: 75px; background-color: gray; padding: 0px 50px;">
+<mat-toolbar color="primary" style="height: 75px; background-color: gray; padding: 0px 50px; position: fixed; width: 100%; z-index: 2;">
+  <button mat-icon-button (click)="sidenav.toggle()" style="color: white;">
+    <mat-icon>menu</mat-icon>
+  </button>
   <span style="color: white;">Sistema Locadora</span>
-  <span class="spacer"></span>
+  <span class="example-spacer"></span>
   <button mat-fab style="background-color: white;">
     <mat-icon style="color: black;">person</mat-icon>
   </button>
 </mat-toolbar>
 
 <!-- SIDEBAR -->
-<mat-sidenav-container class="example-container" style="height: 100vh;"> 
-
-  <mat-sidenav mode="side" opened style="border-radius: 0%; background-color: #424242; display: flex; justify-content: center; align-items: center;">
-  
+<!-- Adicione margem superior equivalente à altura da navbar -->
+<mat-sidenav-container class="example-container" style="height: 100vh; margin-top: 75px;"> 
+  <mat-sidenav #sidenav mode="side" opened style="border-radius: 0%; background-color: #424242; display: flex; justify-content: center; align-items: center;">
     <h2 style="display: flex; justify-content: center; color: white; padding: 20px 0px;">
       <mat-icon>note_add</mat-icon>
       Cadastros
     </h2>
   
     <div class="btn-container" style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
-      
       <div class="btn-ator">
         <a href="/ator" mat-button class="btn-side" style="color: white;">Ator</a>
       </div>  
@@ -47,15 +29,10 @@
       <div class="btn-diretor">
         <button mat-button class="btn-side" style="color: white;">Diretor</button>      
       </div>
-
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    
-    <h1>Bem-vindo ao Conteúdo Principal</h1>
-    <router-outlet />
-    
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
-
 </mat-sidenav-container>
