@@ -21,13 +21,13 @@
   
     <div class="btn-container" style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
       <div class="btn-ator">
-        <a href="/ator" mat-button class="btn-side" style="color: white;">Ator</a>
+        <a [routerLink]="['ator']" mat-button class="btn-side" style="color: white;">Ator</a>
       </div>  
       <div class="btn-classe">
-        <button mat-button class="btn-side" style="color: white;">Classe</button>
+        <a [routerLink]="['classe']" mat-button class="btn-side" style="color: white;">Classe</a>
       </div>    
       <div class="btn-diretor">
-        <button mat-button class="btn-side" style="color: white;">Diretor</button>      
+        <a [routerLink]="['diretor']" mat-button class="btn-side" style="color: white;">Diretor</a>      
       </div>
     </div>
   </mat-sidenav>
