@@ -4,11 +4,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listagem-de-atores',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, MatCardModule],
+  imports: [
+    CommonModule, 
+    MatTableModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    MatCardModule,
+    RouterLink],
   templateUrl: './listagem-de-atores.component.html',
   styleUrl: './listagem-de-atores.component.css'
 })
@@ -29,6 +36,8 @@ export class ListagemDeAtoresComponent {
   }
 
   excluirAtor(ator: any) {
-    // Implementar a lógica para excluir o ator da lista   
+    // Implementar a lógica para excluir o ator da lista 
+    this.atores = this.atores.filter(c => c.id !== ator.id);   
+  
   }
 }

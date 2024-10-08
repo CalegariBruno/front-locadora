@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { RouterOutlet } from '@angular/router';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    RouterOutlet],
+    RouterOutlet, 
+    RouterLink],
   standalone: true
 })
 export class AppComponent {
