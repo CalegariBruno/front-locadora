@@ -3,7 +3,7 @@
       <div class="headerTable">
         <mat-card-title>Listagem de Diretor</mat-card-title>
   
-      <a href="cadastrodiretor" mat-fab style="background-color: white;">
+      <a [routerLink]="['/cadastroDiretor']" mat-fab style="background-color: white;">
         Novo
         <mat-icon style="color: black;">add_circle_outline</mat-icon>       
       </a>
@@ -20,8 +20,8 @@
   
         <!-- Coluna dos botões de ação -->
         <ng-container matColumnDef="acoes">
-          <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-          <mat-cell *matCellDef="let diretor" class="acoes">
+          <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
+          <mat-cell *matCellDef="let diretor" class="acoes" style="justify-content: center;">
             <a href="/cadastroDiretor" mat-icon-button color="primary" >
               <mat-icon>edit</mat-icon>
             </a>

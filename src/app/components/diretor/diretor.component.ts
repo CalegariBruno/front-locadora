@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-diretor',
@@ -13,7 +14,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule, 
     MatButtonModule, 
     MatIconModule, 
-    MatCardModule
+    MatCardModule,
+    RouterLink
   ],
   templateUrl: './diretor.component.html',
   styleUrl: './diretor.component.css'
