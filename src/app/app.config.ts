@@ -6,13 +6,18 @@ import { ListagemDeAtoresComponent } from './components/listagem-de-atores/lista
 import { AtorComponent } from './components/ator/ator.component';
 import { ClasseComponent } from './components/classe/classe.component';
 import { DiretorComponent } from './components/diretor/diretor.component';
+import { CadastroAtorComponent } from './components/cadastro-ator/cadastro-ator.component';
+import { CadastroDiretorComponent } from './components/cadastro-diretor/cadastro-diretor.component';
+import { CadastroClasseComponent } from './components/cadastro-classe/cadastro-classe.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ator', pathMatch: 'full' }, // Rota padrão
-  { path: 'ator', component: ListagemDeAtoresComponent }, // Rota do ator
-  { path: 'ator/cadastroAtor', component: AtorComponent }, // Rota do ator
+  { path: 'ator', component: ListagemDeAtoresComponent }, 
+  { path: 'cadastroAtor', component: CadastroAtorComponent }, 
   { path: 'classe', component: ClasseComponent },
-  { path: 'diretor', component: DiretorComponent }
+  { path: 'diretor', component: DiretorComponent },
+  { path: 'cadastroDiretor', component: CadastroDiretorComponent },
+  { path: 'cadastroClasse', component: CadastroClasseComponent }
 ];
 
 export const appConfig: ApplicationConfig = {

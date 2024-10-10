@@ -3,6 +3,9 @@ import { AtorComponent } from './components/ator/ator.component';
 import { ListagemDeAtoresComponent } from './components/listagem-de-atores/listagem-de-atores.component';
 import { ClasseComponent } from './components/classe/classe.component';
 import { DiretorComponent } from './components/diretor/diretor.component';
+import { CadastroAtorComponent } from './components/cadastro-ator/cadastro-ator.component';
+import { CadastroDiretorComponent } from './components/cadastro-diretor/cadastro-diretor.component';
+import { CadastroClasseComponent } from './components/cadastro-classe/cadastro-classe.component';
 
 export const routes: Routes = [
     {
@@ -10,8 +13,8 @@ export const routes: Routes = [
         component: AtorComponent
     }, 
     {
-        path: 'ator/cadastroAtor',
-        component: AtorComponent
+        path: 'cadastroAtor',
+        component: CadastroAtorComponent
     },
     {
         path: 'ator',
@@ -24,5 +27,13 @@ export const routes: Routes = [
     {
         path: 'diretor',
         component: DiretorComponent
+    },
+    {
+        path: 'cadastroDiretor',
+        component: CadastroDiretorComponent
+    },
+    {
+        path: 'cadastroClasse',
+        component: CadastroClasseComponent
     }
 ];
