@@ -6,36 +6,43 @@ mat-toolbar {
 }
 
 mat-sidenav-container {
-  margin-top: 75px; /* Altura da toolbar */
-  height: calc(100vh - 75px); /* Ajusta a altura do container */
+  margin-top: 75px;
+  /* Altura da toolbar */
+  height: calc(100vh - 75px);
+  /* Ajusta a altura do container */
+}
+
+
+.bold-script {
+  font-family: 'Pacifico', cursive;
 }
 
 
 .btn-side {
-    width: 300px;
-    font-size: larger;
-    transition: background-color 0.3s ease;
-    padding: 30px 0px;
-    color: white;
+  width: 300px;
+  font-size: larger;
+  transition: background-color 0.3s ease;
+  padding: 30px 0px;
+  color: white;
 }
 
 .btn-side:hover {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .example-container {
-    /* position: absolute; */
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }  
+  /* position: absolute; */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
-  .example-spacer {
-    flex: 1 1 auto;
-  }  
+.example-spacer {
+  flex: 1 1 auto;
+}
 
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
