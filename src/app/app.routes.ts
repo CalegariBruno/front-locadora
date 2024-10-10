@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { AtorComponent } from './components/ator/ator.component';
 import { ListagemDeAtoresComponent } from './components/listagem-de-atores/listagem-de-atores.component';
-import { ClasseComponent } from './components/classe/classe.component';
-import { DiretorComponent } from './components/diretor/diretor.component';
+import { ClasseComponent } from './components/listagem-classe/listagem-classe.component';
+import { DiretorComponent } from './components/listagem-diretor/listagem-diretor.component';
 import { CadastroAtorComponent } from './components/cadastro-ator/cadastro-ator.component';
 import { CadastroDiretorComponent } from './components/cadastro-diretor/cadastro-diretor.component';
 import { CadastroClasseComponent } from './components/cadastro-classe/cadastro-classe.component';
