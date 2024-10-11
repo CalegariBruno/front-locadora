@@ -1,13 +1,46 @@
 import { Component } from '@angular/core';
-import { CadastroTemplateComponent } from '../../cadastro-template/cadastro-template.component';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterLink } from '@angular/router';
+import { Classe } from '../../../models/classe/classe';
+import { ClasseService } from '../../../services/classe/classe.service';
 
 @Component({
   selector: 'app-cadastro-classe',
   standalone: true,
-  imports: [CadastroTemplateComponent],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    RouterLink],
   templateUrl: './cadastro-classe.component.html',
   styleUrl: './cadastro-classe.component.css'
 })
+
 export class CadastroClasseComponent {
 
+  classe: Classe = {
+    nome: '', 
+    valor: 0, 
+    prazoDevolucao: new Date() 
+  };
+
+  constructor(private classeService: ClasseService, private router: Router) { }
+
+  onSubmit(): void {
+    if (this.classe.nome && this.classe.valor > 0 && this.classe.prazoDevolucao) {
+      this.classeService.criarClasse(this.classe).subscribe({
+        next: () => {
+          this.router.navigate(['/classe']); 
+          console.log('Classe salva com sucesso!');
+        },
+        error: (err) => {
+          console.error('Erro ao salvar a classe', err);
+        }
+      });
+    }
+  }
 }

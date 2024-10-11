@@ -1,4 +1,46 @@
-<app-cadastro-template 
+<!-- <app-cadastro-template 
     [tipo]="'Classe'" 
     [rotaCancelar]="'/classe'">
-</app-cadastro-template>
+</app-cadastro-template> -->
+
+<div class="container">
+    <h2>Cadastro de Classe</h2>
+
+    <div class="formulario">
+        <form #classeForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome da Classe:</mat-label>
+                    <input matInput [(ngModel)]="classe.nome" name="nome" required>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Valor:</mat-label>
+                    <input matInput [(ngModel)]="classe.valor" name="valor" required type="number">
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Prazo de Devolução:</mat-label>
+                    <input matInput [(ngModel)]="classe.prazoDevolucao" name="prazoDevolucao" required type="date">
+                </mat-form-field>
+            </div>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/classe']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="classeForm.invalid">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
