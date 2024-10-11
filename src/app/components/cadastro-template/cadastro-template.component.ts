@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-cadastro-template',
   standalone: true,
@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./cadastro-template.component.css']
 })
 export class CadastroTemplateComponent {
-  @Input() tipo: string = '';
+  @Input() tipo: string = 'Ator';
   @Input() rotaCancelar: string = '';
 
   nome: string = '';  // Variável para armazenar o valor do input

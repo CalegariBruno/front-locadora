@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { ClasseService } from '../../services/classe/classe.service';
-import { Classe } from '../../models/classe/classe';
+import { ClasseService } from '../../../services/classe/classe.service';
+import { Classe } from '../../../models/classe/classe';
 
 @Component({
   selector: 'app-classe',

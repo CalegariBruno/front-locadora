@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { AtorComponent } from './components/ator/ator.component';
-import { ListagemDeAtoresComponent } from './components/listagem-de-atores/listagem-de-atores.component';
-import { ClasseComponent } from './components/listagem-classe/listagem-classe.component';
-import { DiretorComponent } from './components/listagem-diretor/listagem-diretor.component';
-import { CadastroAtorComponent } from './components/cadastro-ator/cadastro-ator.component';
-import { CadastroDiretorComponent } from './components/cadastro-diretor/cadastro-diretor.component';
-import { CadastroClasseComponent } from './components/cadastro-classe/cadastro-classe.component';
+import { ListagemDeAtoresComponent } from './components/ator/listagem-de-atores/listagem-de-atores.component';
+import { ClasseComponent } from './components/classe/listagem-classe/listagem-classe.component';
+import { DiretorComponent } from './components/diretor/listagem-diretor/listagem-diretor.component';
+import { CadastroAtorComponent } from './components/ator/cadastro-ator/cadastro-ator.component';
+import { CadastroDiretorComponent } from './components/diretor/cadastro-diretor/cadastro-diretor.component';
+import { CadastroClasseComponent } from './components/classe/cadastro-classe/cadastro-classe.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: AtorComponent
+        component: AppComponent
     }, 
     {
         path: 'cadastroAtor',

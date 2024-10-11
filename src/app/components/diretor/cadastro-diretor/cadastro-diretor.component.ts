@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CadastroTemplateComponent } from '../cadastro-template/cadastro-template.component';
+import { CadastroTemplateComponent } from '../../cadastro-template/cadastro-template.component';
 @Component({
   selector: 'app-cadastro-diretor',
   standalone: true,

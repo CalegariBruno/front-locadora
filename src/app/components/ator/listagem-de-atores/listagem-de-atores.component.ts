@@ -5,8 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
-import { AtorService } from '../../services/ator/ator.service';
-import { Ator } from '../../models/ator/ator';
+import { Ator } from '../../../models/ator/ator';
+import { AtorService } from '../../../services/ator/ator.service';
+
 
 @Component({
   selector: 'app-listagem-de-atores',

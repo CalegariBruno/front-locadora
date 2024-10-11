@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
-import { Diretor } from '../../models/diretor/diretor';
-import { DiretorService } from '../../services/diretor/diretor.service';
+import { Diretor } from '../../../models/diretor/diretor';
+import { DiretorService } from '../../../services/diretor/diretor.service';
 
 @Component({
   selector: 'app-diretor',
