@@ -22,7 +22,6 @@ import { AtorService } from '../../../services/ator/ator.service';
 
 export class CadastroAtorComponent {
 
-  tipo: string = 'Ator';
   ator: Ator = { nome: '' }; 
 
   constructor(private atorService: AtorService, private router: Router) { }

@@ -1,12 +1,44 @@
 import { Component } from '@angular/core';
-import { CadastroTemplateComponent } from '../../cadastro-template/cadastro-template.component';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { RouterLink } from '@angular/router';
+import { Diretor } from '../../../models/diretor/diretor';
+import { DiretorService } from '../../../services/diretor/diretor.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-cadastro-diretor',
   standalone: true,
-  imports: [CadastroTemplateComponent],
+  imports: [
+    MatFormFieldModule, 
+    MatInputModule, 
+    FormsModule, 
+    MatButtonModule,
+    RouterLink],
   templateUrl: './cadastro-diretor.component.html',
   styleUrl: './cadastro-diretor.component.css'
 })
+
 export class CadastroDiretorComponent {
+
+  diretor: Diretor = { nome: '' }; 
+
+  constructor(private diretorService: DiretorService, private router: Router) { }
+
+  onSubmit(): void {
+    if (this.diretor.nome) {
+      this.diretorService.criarDiretor(this.diretor).subscribe({
+        next: () => {
+          this.router.navigate(['/diretor']);
+          console.log('Ator salvo com sucesso!');         
+        },
+        error: (err) => {
+          console.error('Erro ao salvar o ator', err);
+        }
+      });
+    }
+  }
 
 }
