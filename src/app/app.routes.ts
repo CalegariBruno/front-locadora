@@ -13,16 +13,28 @@ export const routes: Routes = [
         component: AppComponent
     }, 
     {
-        path: 'cadastroAtor',
-        component: CadastroAtorComponent
-    },
-    {
         path: 'ator',
         component: ListagemDeAtoresComponent
     },
     {
+        path: 'cadastroAtor',
+        component: CadastroAtorComponent
+    },
+    {
+        path: 'cadastroAtor/:id',
+        component: CadastroAtorComponent
+    },    
+    {
         path: 'classe',
         component: ClasseComponent
+    },
+    {
+        path: 'cadastroClasse',
+        component: CadastroClasseComponent
+    },
+    {
+        path: 'cadastroClasse/:id',
+        component: CadastroClasseComponent
     },
     {
         path: 'diretor',
@@ -33,7 +45,8 @@ export const routes: Routes = [
         component: CadastroDiretorComponent
     },
     {
-        path: 'cadastroClasse',
-        component: CadastroClasseComponent
-    }
+        path: 'cadastroDiretor/:id',
+        component: CadastroDiretorComponent
+    },
+    
 ];

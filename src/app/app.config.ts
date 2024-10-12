@@ -14,10 +14,13 @@ const routes: Routes = [
   // { path: '', redirectTo: 'ator', pathMatch: 'full' }, // Rota padrão
   { path: 'ator', component: ListagemDeAtoresComponent },
   { path: 'cadastroAtor', component: CadastroAtorComponent },
-  { path: 'classe', component: ClasseComponent },
+  { path: 'cadastroAtor/:id', component: CadastroAtorComponent },
+  { path: 'classe', component: ClasseComponent },  
+  { path: 'cadastroClasse', component: CadastroClasseComponent },  
+  { path: 'cadastroClasse/:id', component: CadastroClasseComponent },
   { path: 'diretor', component: DiretorComponent },
   { path: 'cadastroDiretor', component: CadastroDiretorComponent },
-  { path: 'cadastroClasse', component: CadastroClasseComponent }
+  { path: 'cadastroDiretor/:id', component: CadastroDiretorComponent }
 ];
 
 export const appConfig: ApplicationConfig = {
