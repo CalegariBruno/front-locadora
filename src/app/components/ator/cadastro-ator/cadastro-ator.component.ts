@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Router, RouterLink } from '@angular/router';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { Ator } from '../../../models/ator/ator';
 import { AtorService } from '../../../services/ator/ator.service';
 
@@ -20,24 +20,61 @@ import { AtorService } from '../../../services/ator/ator.service';
   styleUrl: './cadastro-ator.component.css'
 })
 
-export class CadastroAtorComponent {
-
+export class CadastroAtorComponent implements OnInit {
+  
   ator: Ator = { nome: '' }; 
+  id!: number;  
 
-  constructor(private atorService: AtorService, private router: Router) { }
+  constructor(
+    private atorService: AtorService,
+    private router: Router,
+    private route: ActivatedRoute 
+  ) { }
 
-  onSubmit(): void {
-    if (this.ator.nome) {
-      this.atorService.criarAtor(this.ator).subscribe({
-        next: () => {
-          this.router.navigate(['/ator']);
-          console.log('Ator salvo com sucesso!');         
-        },
-        error: (err) => {
-          console.error('Erro ao salvar o ator', err);
-        }
-      });
-    }
+  ngOnInit(): void {
+
+    // PEGA O ID DA URL
+    this.route.params.subscribe(params => {
+
+      this.id = +params['id']; // CONVERTE PARA NUMBER
+
+      if (this.id) {        
+        this.atorService.buscarAtor(this.id).subscribe((ator: Ator) => {
+          this.ator = ator;
+        });
+      }
+
+    });
   }
 
+  onSubmit(): void {
+
+    if (this.id) { // EDITAR ATOR
+      
+      this.atorService.editarAtor(this.ator).subscribe({
+        next: () => {          
+          this.router.navigate(['/ator']);
+          console.log('Ator atualizado com sucesso!');
+        },
+        error: (err) => {
+          console.error('Erro ao atualizar o ator', err);
+        }
+      });
+
+    } else { // CRIAR ATOR
+      
+      if (this.ator.nome) {
+        this.atorService.criarAtor(this.ator).subscribe({
+          next: () => {            
+            this.router.navigate(['/ator']); 
+            console.log('Ator salvo com sucesso!');
+          },
+          error: (err) => {
+            console.error('Erro ao salvar o ator', err);
+          }
+        });
+      }
+    }
+
+  }
 }
