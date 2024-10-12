@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { ClasseService } from '../../../services/classe/classe.service';
 import { Classe } from '../../../models/classe/classe';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-classe',
@@ -15,7 +16,8 @@ import { Classe } from '../../../models/classe/classe';
     MatTableModule, 
     MatButtonModule, 
     MatIconModule, 
-    MatCardModule
+    MatCardModule,
+    RouterLink
   ],
   templateUrl: './listagem-classe.component.html',
   styleUrl: './listagem-classe.component.css'
@@ -24,8 +26,7 @@ import { Classe } from '../../../models/classe/classe';
 export class ClasseComponent implements OnInit {
 
   classes: Classe[] = [];
-  displayedColumns: string[] = ['nome', 'valor', 'prazoDevolucao', 'acoes'];
-  @Input() tipo: string = 'Classes';
+  displayedColumns: string[] = ['nome', 'valor', 'prazoDevolucao', 'acoes'];  
 
   constructor(private classeService: ClasseService) { }
 
@@ -43,10 +44,6 @@ export class ClasseComponent implements OnInit {
         console.error('Erro ao carregar a lista de classes', error);
       }      
     );
-  }
-
-  editarClasse(classe: any) {
-    // Configurar para abrir a tela de edição/cadastro
   }
 
   excluirClasse(classe: any) {
