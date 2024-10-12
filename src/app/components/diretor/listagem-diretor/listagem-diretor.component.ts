@@ -22,11 +22,11 @@ import { DiretorService } from '../../../services/diretor/diretor.service';
   templateUrl: './listagem-diretor.component.html',
   styleUrl: './listagem-diretor.component.css'
 })
+
 export class DiretorComponent implements OnInit{
 
   diretores: Diretor[] = [];
-  displayedColumns: string[] = ['nome', 'acoes'];
-  @Input() tipo: string = 'Diretores';
+  displayedColumns: string[] = ['nome', 'acoes'];  
 
   constructor(private diretorService: DiretorService) { }
 
@@ -44,11 +44,7 @@ export class DiretorComponent implements OnInit{
         console.error('Erro ao carregar a lista de atores', error);
       }      
     );
-  }
-
-  editarDiretor(diretor: any) {
-    // Configurar para abrir a tela de edição/cadastro
-  }
+  } 
 
   excluirDiretor(diretor: any) {
     // Implementar a lógica para excluir o Diretor da lista

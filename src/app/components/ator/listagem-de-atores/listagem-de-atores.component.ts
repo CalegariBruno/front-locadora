@@ -27,7 +27,6 @@ export class ListagemDeAtoresComponent implements OnInit {
 
   atores: Ator[] = [];
   displayedColumns: string[] = ['nome', 'acoes'];
-  @Input() tipo: string = 'Atores';
 
   constructor(private atorService: AtorService) { }
 
@@ -39,17 +38,13 @@ export class ListagemDeAtoresComponent implements OnInit {
     this.atorService.listarAtores().subscribe(
       (data: Ator[]) => {
         this.atores = data;
-        console.log(this.atores); // lembrar de tirar
+        console.log(this.atores); 
       },
       (error) => {
         console.error('Erro ao carregar a lista de atores', error);
       }      
     );
-  }
-
-  editarAtor(ator: any) {
-    // Configurar para abrir a tela de edição/cadastro
-  }
+  }  
 
   excluirAtor(ator: any) {
     // Implementar a lógica para excluir o ator da lista 
