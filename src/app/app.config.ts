@@ -9,6 +9,7 @@ import { CadastroAtorComponent } from './components/ator/cadastro-ator/cadastro-
 import { CadastroDiretorComponent } from './components/diretor/cadastro-diretor/cadastro-diretor.component';
 import { CadastroClasseComponent } from './components/classe/cadastro-classe/cadastro-classe.component';
 import { provideHttpClient } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'ator', pathMatch: 'full' }, // Rota padrão
@@ -29,5 +30,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync('noop'),
     provideHttpClient(),
+    provideToastr(),
     BrowserAnimationsModule, provideAnimations()]
 };

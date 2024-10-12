@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,8 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 import { Ator } from '../../../models/ator/ator';
 import { AtorService } from '../../../services/ator/ator.service';
-
-
+import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-listagem-de-atores',
   standalone: true,
@@ -18,7 +19,7 @@ import { AtorService } from '../../../services/ator/ator.service';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    RouterLink],
+    RouterLink,],
   templateUrl: './listagem-de-atores.component.html',
   styleUrl: './listagem-de-atores.component.css'
 })
@@ -28,7 +29,7 @@ export class ListagemDeAtoresComponent implements OnInit {
   atores: Ator[] = [];
   displayedColumns: string[] = ['nome', 'acoes'];
 
-  constructor(private atorService: AtorService) { }
+  constructor(private atorService: AtorService, private dialog: MatDialog, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.exibirAtores();
@@ -46,8 +47,22 @@ export class ListagemDeAtoresComponent implements OnInit {
     );
   }  
 
-  excluirAtor(ator: any) {
-    // Implementar a lógica para excluir o ator da lista 
-    //this.atores = this.atores.filter(c => c.id !== ator.id);
+  excluirAtor(ator: Ator) {
+    this.atorService.deletarAtor(ator.id!).subscribe({
+      next: ()=> {
+        this.toastrService.success('Ator excluído com sucesso')
+      }         
+    });
+  }
+
+  openDialog(ator: Ator): void{
+    const dialogRef = this.dialog.open(DialogExcluirComponent)
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.excluirAtor(ator);
+        this.atores = this.atores.filter(c => c.id !== ator.id);
+      }
+    });
   }
 }

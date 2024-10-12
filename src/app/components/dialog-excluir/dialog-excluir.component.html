@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>Deseja realmente excluir ?/</h2>
+<mat-dialog-content>Deseja realmente excluir ?</mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button (click)="onCancel()">Cancelar</button>
-    <button mat-button (click)="onClose()">Sim</button>
-</mat-dialog-actions>dialog
+    <button mat-button mat-dialog-close (click)="onCancel()">Cancelar</button>
+    <button mat-button mat-dialog-close (click)="onClose()">Sim</button>
+</mat-dialog-actions>

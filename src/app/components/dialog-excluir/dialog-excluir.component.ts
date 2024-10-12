@@ -1,29 +1,33 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogTitle } from '@angular/material/dialog';
 import { MatDialogActions } from '@angular/material/dialog';
 import { MatDialogContent } from '@angular/material/dialog';
-
 @Component({
   selector: 'app-dialog-excluir',
   standalone: true,
   imports: [
     MatDialogActions,
-    MatDialogContent
-  ],
+    MatDialogContent,
+    MatButtonModule, 
+    MatDialogTitle],
   templateUrl: './dialog-excluir.component.html',
   styleUrl: './dialog-excluir.component.css',
 })  
-export class MyDialogComponent {
+export class DialogExcluirComponent {
   
-  constructor(private dialogRef: MatDialogRef<MyDialogComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<DialogExcluirComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { nome: string } 
+  ) {}
 
   onClose(): void {
     // Lógica para o botão "Fechar"
-    this.dialogRef.close(); // Fecha o diálogo
+    this.dialogRef.close(true); 
   }
 
   onCancel(): void {
     // Lógica para o botão "Cancelar"
-    this.dialogRef.close(); // Fecha o diálogo
+    this.dialogRef.close(); 
   }
 }
