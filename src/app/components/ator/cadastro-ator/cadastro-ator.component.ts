@@ -24,6 +24,9 @@ export class CadastroAtorComponent implements OnInit {
   
   ator: Ator = { nome: '' }; 
   id!: number;  
+  tipo!: string;
+
+  
 
   constructor(
     private atorService: AtorService,
@@ -45,6 +48,13 @@ export class CadastroAtorComponent implements OnInit {
       }
 
     });
+
+    if(this.id){
+      this.tipo = 'Editar'
+    }else{
+      this.tipo = 'Cadastrar'
+    }
+
   }
 
   onSubmit(): void {

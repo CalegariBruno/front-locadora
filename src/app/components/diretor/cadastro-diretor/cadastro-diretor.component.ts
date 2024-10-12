@@ -25,6 +25,7 @@ export class CadastroDiretorComponent implements OnInit {
 
   diretor: Diretor = { nome: '' };
   id!: number;
+  tipo!: string;
 
   constructor(
     private diretorService: DiretorService,
@@ -45,6 +46,13 @@ export class CadastroDiretorComponent implements OnInit {
       }
 
     })
+
+    if(this.id){
+      this.tipo = 'Editar'
+    }else{
+      this.tipo = 'Cadastrar'
+    }
+    
   }
 
   onSubmit(): void {
