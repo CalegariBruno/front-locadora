@@ -6,12 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { Ator } from '../../../models/ator/ator';
 import { AtorService } from '../../../services/ator/ator.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro-ator',
   standalone: true,
   imports: [
-    MatFormFieldModule, 
+    MatFormFieldModule,     
     MatInputModule, 
     FormsModule, 
     MatButtonModule,
@@ -24,14 +25,13 @@ export class CadastroAtorComponent implements OnInit {
   
   ator: Ator = { nome: '' }; 
   id!: number;  
-  tipo!: string;
-
-  
+  tipo!: string;  
 
   constructor(
     private atorService: AtorService,
     private router: Router,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar 
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +64,9 @@ export class CadastroAtorComponent implements OnInit {
       this.atorService.editarAtor(this.ator).subscribe({
         next: () => {          
           this.router.navigate(['/ator']);
+          this.snackBar.open('Ator atualizado com sucesso!', 'Fechar', {
+            duration: 5000,
+          });
           console.log('Ator atualizado com sucesso!');
         },
         error: (err) => {
@@ -77,6 +80,9 @@ export class CadastroAtorComponent implements OnInit {
         this.atorService.criarAtor(this.ator).subscribe({
           next: () => {            
             this.router.navigate(['/ator']); 
+            this.snackBar.open('Ator salvo com sucesso!', 'Fechar', {
+              duration: 5000, // tempo que o toast fica visível
+            });
             console.log('Ator salvo com sucesso!');
           },
           error: (err) => {
