@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Classe } from '../../../models/classe/classe';
 import { ClasseService } from '../../../services/classe/classe.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro-classe',
@@ -34,7 +35,8 @@ export class CadastroClasseComponent implements OnInit {
   constructor(
     private classeService: ClasseService, 
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -66,8 +68,11 @@ export class CadastroClasseComponent implements OnInit {
       if (this.id) {
         
         this.classeService.editarClasse(this.classe).subscribe({
-          next: () => {
+          next: () => {            
             this.router.navigate(['/classe']); 
+            this.snackBar.open('Classe atualizada com sucesso!', 'Fechar', {
+              duration: 5000,
+            });
             console.log('Classe atualizada com sucesso!');
           },
           error: (err) => {
@@ -80,6 +85,9 @@ export class CadastroClasseComponent implements OnInit {
         this.classeService.criarClasse(this.classe).subscribe({
           next: () => {
             this.router.navigate(['/classe']);
+            this.snackBar.open('Classe salva com sucesso!', 'Fechar', {
+              duration: 5000,
+            });
             console.log('Classe salva com sucesso!');
           },
           error: (err) => {

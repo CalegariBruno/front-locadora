@@ -7,6 +7,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Diretor } from '../../../models/diretor/diretor';
 import { DiretorService } from '../../../services/diretor/diretor.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro-diretor',
@@ -31,6 +32,7 @@ export class CadastroDiretorComponent implements OnInit {
     private diretorService: DiretorService,
     private router: Router,
     private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -62,6 +64,9 @@ export class CadastroDiretorComponent implements OnInit {
       this.diretorService.editarDiretor(this.diretor).subscribe({
         next: () => {
           this.router.navigate(['/diretor']);
+          this.snackBar.open('Diretor atualizado com sucesso!', 'Fechar', {
+            duration: 5000,
+          });
           console.error('Diretor atualizado com sucesso!');
         },
         error: (err) => {
@@ -75,6 +80,9 @@ export class CadastroDiretorComponent implements OnInit {
         this.diretorService.criarDiretor(this.diretor).subscribe({
           next: () => {
             this.router.navigate(['/diretor']);
+            this.snackBar.open('Diretor salvo com sucesso!', 'Fechar', {
+              duration: 5000,
+            });
             console.log('Ator salvo com sucesso!');
           },
           error: (err) => {
