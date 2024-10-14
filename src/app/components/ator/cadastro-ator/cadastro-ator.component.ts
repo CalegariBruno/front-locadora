@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { Ator } from '../../../models/ator/ator';
 import { AtorService } from '../../../services/ator/ator.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-ator',
@@ -31,7 +32,7 @@ export class CadastroAtorComponent implements OnInit {
     private atorService: AtorService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar 
+    private toastrService: ToastrService 
   ) { }
 
   ngOnInit(): void {
@@ -64,9 +65,7 @@ export class CadastroAtorComponent implements OnInit {
       this.atorService.editarAtor(this.ator).subscribe({
         next: () => {          
           this.router.navigate(['/ator']);
-          this.snackBar.open('Ator atualizado com sucesso!', 'Fechar', {
-            duration: 5000,
-          });
+          this.toastrService.success('Ator editado com sucesso!')
           console.log('Ator atualizado com sucesso!');
         },
         error: (err) => {
@@ -80,9 +79,7 @@ export class CadastroAtorComponent implements OnInit {
         this.atorService.criarAtor(this.ator).subscribe({
           next: () => {            
             this.router.navigate(['/ator']); 
-            this.snackBar.open('Ator salvo com sucesso!', 'Fechar', {
-              duration: 5000, // tempo que o toast fica visível
-            });
+            this.toastrService.success('Ator salvo com sucesso!')
             console.log('Ator salvo com sucesso!');
           },
           error: (err) => {

@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Classe } from '../../../models/classe/classe';
 import { ClasseService } from '../../../services/classe/classe.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-classe',
@@ -27,7 +27,7 @@ export class CadastroClasseComponent implements OnInit {
   classe: Classe = {
     nome: '', 
     valor: 0, 
-    prazoDevolucao: new Date() 
+    prazoDevolucao: '' 
   };
   id!: number;
   tipo!: string;
@@ -36,7 +36,7 @@ export class CadastroClasseComponent implements OnInit {
     private classeService: ClasseService, 
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -65,14 +65,14 @@ export class CadastroClasseComponent implements OnInit {
 
     if (this.classe.nome && this.classe.valor > 0 && this.classe.prazoDevolucao) {
 
-      if (this.id) {
+      if (this.id) { // EDITAR CLASSE
+
+        
         
         this.classeService.editarClasse(this.classe).subscribe({
           next: () => {            
             this.router.navigate(['/classe']); 
-            this.snackBar.open('Classe atualizada com sucesso!', 'Fechar', {
-              duration: 5000,
-            });
+            this.toastrService.success('Classe editada com sucesso!')
             console.log('Classe atualizada com sucesso!');
           },
           error: (err) => {
@@ -80,14 +80,12 @@ export class CadastroClasseComponent implements OnInit {
           }
         });
 
-      } else { 
+      } else { // CRIAR CLASSE
         
         this.classeService.criarClasse(this.classe).subscribe({
           next: () => {
             this.router.navigate(['/classe']);
-            this.snackBar.open('Classe salva com sucesso!', 'Fechar', {
-              duration: 5000,
-            });
+            this.toastrService.success('Classe salva com sucesso!')
             console.log('Classe salva com sucesso!');
           },
           error: (err) => {

@@ -29,7 +29,11 @@ export class ListagemDeAtoresComponent implements OnInit {
   atores: Ator[] = [];
   displayedColumns: string[] = ['nome', 'acoes'];
 
-  constructor(private atorService: AtorService, private dialog: MatDialog, private toastrService: ToastrService) { }
+  constructor(
+    private atorService: AtorService, 
+    private dialog: MatDialog, 
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.exibirAtores();
@@ -41,7 +45,7 @@ export class ListagemDeAtoresComponent implements OnInit {
         this.atores = data;
         console.log(this.atores); 
       },
-      (error) => {
+      (error) => {        
         console.error('Erro ao carregar a lista de atores', error);
       }      
     );
@@ -50,7 +54,7 @@ export class ListagemDeAtoresComponent implements OnInit {
   excluirAtor(ator: Ator) {
     this.atorService.deletarAtor(ator.id!).subscribe({
       next: ()=> {
-        this.toastrService.success('Ator excluído com sucesso')
+        this.toastrService.success('Ator excluído com sucesso!')
       }         
     });
   }

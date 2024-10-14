@@ -52,7 +52,7 @@ export class ClasseComponent implements OnInit {
   excluirclasse(classe: Classe) {
     this.classeService.deletarClasse(classe.id!).subscribe({
       next: ()=> {
-        this.toastrService.success('classe excluído com sucesso')
+        this.toastrService.success('Classe excluída com sucesso!')
       }         
     });
   }

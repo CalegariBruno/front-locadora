@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,7 +30,10 @@ export class DiretorComponent implements OnInit{
   diretores: Diretor[] = [];
   displayedColumns: string[] = ['nome', 'acoes'];  
 
-  constructor(private diretorService: DiretorService, private toastrService: ToastrService, private dialog: MatDialog) { }
+  constructor(
+    private diretorService: DiretorService, 
+    private toastrService: ToastrService, 
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.exibirDiretores();
@@ -39,8 +42,7 @@ export class DiretorComponent implements OnInit{
   exibirDiretores(): void {
     this.diretorService.listarDiretores().subscribe(
       (data: Diretor[]) => {
-        this.diretores = data;
-        console.log(this.diretores); // lembrar de tirar
+        this.diretores = data;         
       },
       (error) => {
         console.error('Erro ao carregar a lista de diretores', error);
@@ -51,7 +53,7 @@ export class DiretorComponent implements OnInit{
   excluirdiretor(diretor: Diretor) {
     this.diretorService.deletarDiretor(diretor.id!).subscribe({
       next: ()=> {
-        this.toastrService.success('diretor excluído com sucesso')
+        this.toastrService.success('Diretor excluído com sucesso!')
       }         
     });
   }
