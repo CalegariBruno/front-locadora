@@ -21,7 +21,7 @@
             <ng-container matColumnDef="valor">
                 <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
                 <mat-cell *matCellDef="let classe" class="classe-valor">
-                    {{ classe.valor }}
+                    R$ {{ classe.valor }}
                 </mat-cell>
             </ng-container>
 
@@ -29,7 +29,7 @@
             <ng-container matColumnDef="prazoDevolucao">
                 <mat-header-cell *matHeaderCellDef> Data Devolução </mat-header-cell>
                 <mat-cell *matCellDef="let classe" class="classe-data-devolucao">
-                    {{ classe.prazoDevolucao }} 
+                    {{ classe.prazoDevolucao | date:'dd/MM/yyyy' }} 
                 </mat-cell>
             </ng-container>
 
