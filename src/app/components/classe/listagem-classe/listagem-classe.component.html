@@ -40,7 +40,7 @@
                     <a [routerLink]="['/cadastroClasse', classe.id]" mat-icon-button color="primary">
                         <mat-icon>edit</mat-icon>
                     </a>
-                    <button mat-icon-button color="warn" (click)="excluirClasse(classe)">
+                    <button mat-icon-button color="warn" (click)="openDialog(classe)">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </mat-cell>

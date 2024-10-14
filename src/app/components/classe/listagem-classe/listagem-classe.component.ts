@@ -7,6 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { ClasseService } from '../../../services/classe/classe.service';
 import { Classe } from '../../../models/classe/classe';
 import { RouterLink } from '@angular/router';
+import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-classe',
@@ -28,7 +31,7 @@ export class ClasseComponent implements OnInit {
   classes: Classe[] = [];
   displayedColumns: string[] = ['nome', 'valor', 'prazoDevolucao', 'acoes'];  
 
-  constructor(private classeService: ClasseService) { }
+  constructor(private classeService: ClasseService, private dialog: MatDialog, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.exibirClasses();
@@ -46,8 +49,22 @@ export class ClasseComponent implements OnInit {
     );
   }
 
-  excluirClasse(classe: any) {
-    // Implementar a lógica para excluir o classe da lista
-    //this.classes = this.classes.filter(c => c.id !== classe.id);   
+  excluirclasse(classe: Classe) {
+    this.classeService.deletarClasse(classe.id!).subscribe({
+      next: ()=> {
+        this.toastrService.success('classe excluído com sucesso')
+      }         
+    });
+  }
+
+  openDialog(classe: Classe): void{
+    const dialogRef = this.dialog.open(DialogExcluirComponent)
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.excluirclasse(classe);
+        this.classes = this.classes.filter(c => c.id !== classe.id);
+      }
+    });
   }
 }
