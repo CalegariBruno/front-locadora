@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<mat-toolbar color="primary" style="height: 75px; background-color: gray; padding: 0px 50px; position: fixed; width: 100%; z-index: 2;">
+<mat-toolbar color="primary" style="height: 75px; background-color: #575757; padding: 0px 50px; position: fixed; width: 100%; z-index: 2;">
   <button mat-icon-button (click)="sidenav.toggle()" style="color: white;">
     <mat-icon>menu</mat-icon>
   </button>
@@ -21,18 +21,18 @@
   
     <div class="btn-container" style="margin-top: 5px; display: flex; flex-direction: column; gap: 5px; align-items: center;">
       <div class="btn-ator">
-        <a [routerLink]="['ator']" mat-button class="btn-side" style="color: white;">Ator</a>
+        <a [routerLink]="['/ator']" mat-button class="btn-side" style="color: white;">Ator</a>
       </div>  
       <div class="btn-classe">
-        <a [routerLink]="['classe']" mat-button class="btn-side" style="color: white;">Classe</a>
+        <a [routerLink]="['/classe']" mat-button class="btn-side" style="color: white;">Classe</a>
       </div>    
       <div class="btn-diretor">
-        <a [routerLink]="['diretor']" mat-button class="btn-side" style="color: white;">Diretor</a>      
+        <a [routerLink]="['/diretor']" mat-button class="btn-side" style="color: white;">Diretor</a>      
       </div>
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content>    
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
