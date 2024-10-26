@@ -6,6 +6,8 @@ import { CadastroAtorComponent } from './components/ator/cadastro-ator/cadastro-
 import { CadastroDiretorComponent } from './components/diretor/cadastro-diretor/cadastro-diretor.component';
 import { CadastroClasseComponent } from './components/classe/cadastro-classe/cadastro-classe.component';
 import { AppComponent } from './app.component';
+import { ListagemTituloComponent } from './components/titulo/listagem-titulo/listagem-titulo.component';
+import { CadastroTituloComponent } from './components/titulo/cadastro-titulo/cadastro-titulo.component';
 
 export const routes: Routes = [
     {
@@ -47,6 +49,18 @@ export const routes: Routes = [
     {
         path: 'cadastroDiretor/:id',
         component: CadastroDiretorComponent
+    },
+    {
+        path: 'titulo',
+        component: ListagemTituloComponent
+    },
+    {
+        path: 'cadastroTitulo',
+        component: CadastroTituloComponent
+    },
+    {
+        path: 'cadastroTitulo/:id',
+        component: CadastroTituloComponent
     },
     
 ];
