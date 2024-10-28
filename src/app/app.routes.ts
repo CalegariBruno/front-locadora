@@ -8,6 +8,8 @@ import { CadastroClasseComponent } from './components/classe/cadastro-classe/cad
 import { AppComponent } from './app.component';
 import { ListagemTituloComponent } from './components/titulo/listagem-titulo/listagem-titulo.component';
 import { CadastroTituloComponent } from './components/titulo/cadastro-titulo/cadastro-titulo.component';
+import { ListagemItemComponent } from './components/item/listagem-item/listagem-item.component';
+import { CadastroItemComponent } from './components/item/cadastro-item/cadastro-item.component';
 
 export const routes: Routes = [
     {
@@ -61,6 +63,18 @@ export const routes: Routes = [
     {
         path: 'cadastroTitulo/:id',
         component: CadastroTituloComponent
+    },
+    {    
+        path: 'item',
+        component: ListagemItemComponent 
+    },
+    {
+        path: 'cadastroItem',
+        component: CadastroItemComponent
+    },
+    {
+        path: 'cadastroItem/:id',
+        component: CadastroItemComponent
     },
     
 ];

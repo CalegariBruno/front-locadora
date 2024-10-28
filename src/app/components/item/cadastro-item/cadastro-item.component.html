@@ -1,0 +1,48 @@
+<div class="container">
+    <h2>{{tipo}} Item</h2>
+
+    <div class="formulario">
+        <form #itemForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- Campo inserir número de série -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nº Série:</mat-label>
+                    <input matInput [(ngModel)]="item.numSerie" name="numSerie" required type="number">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir data de aquisição -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Data de aquisição:</mat-label>
+                    <input matInput [(ngModel)]="item.dtAquisicao" name="dtAquisicao" required type="date">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir tipo de item -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione o tipo</mat-label>
+                    <mat-select>
+                        @for (tipos of tiposItem; track tipos) {
+                        <mat-option [value]="tipos.value">{{tipos.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/item']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="itemForm.invalid">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="container">
+    <mat-card>
+        <div class="headerTable">
+            <mat-card-title>Listagem de Itens</mat-card-title>
+
+            <a [routerLink]="['/cadastroItem']" mat-fab>
+                Novo Item
+                <mat-icon style="color: black;">add_circle_outline</mat-icon>
+            </a>
+        </div>
+
+        <mat-table [dataSource]="itens" class="mat-elevation-z8">
+
+            <!-- coluna numero de serie -->
+            <ng-container matColumnDef="numSerie">
+                <mat-header-cell *matHeaderCellDef> Nº Série </mat-header-cell>
+                <mat-cell *matCellDef="let item" class="item-numSerie">
+                    {{ item.numSerie }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna data de aquisicao -->
+            <ng-container matColumnDef="dtAquisicao">
+                <mat-header-cell *matHeaderCellDef> Data de Aquisição </mat-header-cell>
+                <mat-cell *matCellDef="let item" class="item-dtAquisicao">
+                    {{ item.dtAquisicao }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna título -->
+            <ng-container matColumnDef="titulo">
+                <mat-header-cell *matHeaderCellDef> Título </mat-header-cell>
+                <mat-cell *matCellDef="let item" class="item-titulo">
+                    {{ item.titulo }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna tipo do item -->
+            <ng-container matColumnDef="tipoItem">
+                <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
+                <mat-cell *matCellDef="let item" class="item-tipoItem">
+                    {{ item.tipoItem }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna dos botões de ação -->
+            <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let item" class="acoes" style="justify-content: center;">
+                    <a [routerLink]="['/cadastroItem', item.id]" mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-icon-button color="warn" (click)="openDialog(item)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Header e linhas da tabela -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card>
+</div>
