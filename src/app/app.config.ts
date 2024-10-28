@@ -10,6 +10,8 @@ import { CadastroDiretorComponent } from './components/diretor/cadastro-diretor/
 import { CadastroClasseComponent } from './components/classe/cadastro-classe/cadastro-classe.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
+import { ListagemItemComponent } from './components/item/listagem-item/listagem-item.component';
+import { CadastroItemComponent } from './components/item/cadastro-item/cadastro-item.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'ator', pathMatch: 'full' }, // Rota padrão
@@ -21,7 +23,10 @@ const routes: Routes = [
   { path: 'cadastroClasse/:id', component: CadastroClasseComponent },
   { path: 'diretor', component: DiretorComponent },
   { path: 'cadastroDiretor', component: CadastroDiretorComponent },
-  { path: 'cadastroDiretor/:id', component: CadastroDiretorComponent }
+  { path: 'cadastroDiretor/:id', component: CadastroDiretorComponent },
+  { path: 'item', component: ListagemItemComponent },
+  { path: 'cadastroItem', component: CadastroItemComponent },
+  { path: 'cadastroItem/:id', component: CadastroItemComponent }
 ];
 
 export const appConfig: ApplicationConfig = {
