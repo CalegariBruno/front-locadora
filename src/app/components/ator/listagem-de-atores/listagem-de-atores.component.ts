@@ -10,6 +10,7 @@ import { AtorService } from '../../../services/ator/ator.service';
 import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-listagem-de-atores',
   standalone: true,
