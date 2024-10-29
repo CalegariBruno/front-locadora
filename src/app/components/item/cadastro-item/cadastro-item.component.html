@@ -24,9 +24,21 @@
             <div class="insere">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Selecione o tipo</mat-label>
-                    <mat-select>
+                    <mat-select [(ngModel)]="item.tipoItem" name="tipoItem">
                         @for (tipos of tiposItem; track tipos) {
                         <mat-option [value]="tipos.value">{{tipos.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir titulo -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione o título</mat-label>
+                    <mat-select [(ngModel)]="item.titulo.id" name="titulo">
+                        @for (titulos of titulosList; track titulos) {
+                        <mat-option [value]="titulos.id">{{titulos.nome}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>

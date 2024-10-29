@@ -8,6 +8,8 @@ import { Item } from '../../../models/item/item';
 import { ItemService } from '../../../services/item/item.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatSelectModule } from '@angular/material/select';
+import { Titulo } from '../../../models/titulo/titulo';
+import { TituloService } from '../../../services/titulo/titulo.service';
 
 interface TiposItem {
   value: string;
@@ -30,22 +32,30 @@ interface TiposItem {
 })
 export class CadastroItemComponent {
 
-  item: Item = { numSerie: 0, dtAquisicao: '', tipoItem: '' };
+  item: Item = { numSerie: 0, dtAquisicao: '', tipoItem: '', titulo: { id: 0 } };
   id!: number;
   tipo!: string;
   tiposItem: TiposItem[] = [
-    { value: 'fita-0', viewValue: 'Fita' },
-    { value: 'dvd-1', viewValue: 'DVD' },
-    { value: 'blueray-1', viewValue: 'BlueRay' },
+    { value: 'fita', viewValue: 'fita' },
+    { value: 'DVD', viewValue: 'DVD' },
+    { value: 'BlueRay', viewValue: 'BlueRay' },
   ];
+  titulosList: Titulo[] = []
+
   constructor(
     private itemService: ItemService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private tituloService: TituloService, 
   ) { }
 
   ngOnInit(): void {
+
+    // Carrega os títulos ao iniciar o componente
+    this.tituloService.listarTitulos().subscribe((titulos: Titulo[]) => {
+      this.titulosList = titulos;
+    });
 
     // PEGA O ID DA URL
     this.route.params.subscribe(params => {
@@ -70,7 +80,10 @@ export class CadastroItemComponent {
 
   onSubmit(): void {
 
-    if (this.item.numSerie > 0 && this.item.dtAquisicao && this.item.tipoItem) {
+    console.log("ENTROU NO SUBMIT")
+    console.log("FORM ITEM -> ", this.item)
+
+    if (this.item.numSerie > 0 && this.item.dtAquisicao && this.item.tipoItem && this.item.titulo.id > 0) {
 
       if (this.id) { // EDITAR ITEM        
 
