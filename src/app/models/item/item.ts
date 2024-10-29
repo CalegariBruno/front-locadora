@@ -1,9 +1,21 @@
-export interface Item {
+import { Titulo } from "../titulo/titulo";
 
-    id?: number;         
+export interface Item {
+        
+    id?: number
     numSerie: number;        
     dtAquisicao: string;       
     tipoItem: string; 
-    //titulo: Titulo;
+    titulo: {id: number};
+}
+
+
+export interface ItemList {
+        
+    id?: number
+    numSerie: number;        
+    dtAquisicao: string;       
+    tipoItem: string; 
+    titulo: Titulo;
 
 }

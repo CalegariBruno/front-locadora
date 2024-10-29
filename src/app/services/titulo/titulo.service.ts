@@ -8,7 +8,7 @@ import { Titulo } from '../../models/titulo/titulo';
 })
 export class TituloService {
 
-  private url = 'http://localhost:8080/api/diretores';
+  private url = 'http://localhost:8080/api/titulos';
 
   constructor(private http: HttpClient) { }
 

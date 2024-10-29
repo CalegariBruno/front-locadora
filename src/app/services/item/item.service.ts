@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Item } from '../../models/item/item';
+import { Item, ItemList } from '../../models/item/item';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,8 +13,8 @@ export class ItemService {
   constructor(private http: HttpClient) { }
 
   // LISTAR ITENS
-  listarItens(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.url}/listar`);
+  listarItens(): Observable<ItemList[]> {
+    return this.http.get<ItemList[]>(`${this.url}/listar`);
   }
 
   // CRIAR ITEM
