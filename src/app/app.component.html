@@ -1,5 +1,6 @@
 <!-- NAVBAR -->
-<mat-toolbar color="primary" style="height: 75px; background-color: #575757; padding: 0px 50px; position: fixed; width: 100%; z-index: 2;">
+<mat-toolbar color="primary"
+  style="height: 75px; background-color: #575757; padding: 0px 50px; position: fixed; width: 100%; z-index: 2;">
   <button mat-icon-button (click)="sidenav.toggle()" style="color: white;">
     <mat-icon>menu</mat-icon>
   </button>
@@ -12,33 +13,43 @@
 
 <!-- SIDEBAR -->
 <!-- Adicione margem superior equivalente à altura da navbar -->
-<mat-sidenav-container class="example-container" style="height: 100vh; margin-top: 75px;"> 
-  <mat-sidenav #sidenav mode="side" opened style="border-radius: 0%; background-color: #424242; display: flex; justify-content: center; align-items: center;">
-    <h2 style="margin: 0px; display: flex; justify-content: center; color: white; padding: 20px 0px; border-bottom: 2px solid white;">
-      <mat-icon>note_add</mat-icon>
+<mat-sidenav-container class="example-container" style="height: 100vh; margin-top: 75px;">
+  <mat-sidenav #sidenav mode="side" opened
+    style="border-radius: 0%; background-color: #424242; display: flex; justify-content: center; align-items: center;">
+
+    <h2
+      style="margin: 0px; display: flex; justify-content: center; color: white; padding: 20px 0px; border-bottom: 2px solid white;">
+      <mat-icon style="margin-right: 10px;">note_add</mat-icon>
       Cadastros
     </h2>
-  
-    <div class="btn-container" style="margin-top: 5px; display: flex; flex-direction: column; gap: 5px; align-items: center;">
+
+    <div class="btn-container"
+      style="margin-top: 5px; display: flex; flex-direction: column; gap: 5px; align-items: center;">
       <div class="btn-ator">
         <a [routerLink]="['/ator']" mat-button class="btn-side" style="color: white;">Ator</a>
-      </div>  
+      </div>
       <div class="btn-classe">
         <a [routerLink]="['/classe']" mat-button class="btn-side" style="color: white;">Classe</a>
-      </div>    
+      </div>
       <div class="btn-diretor">
-        <a [routerLink]="['/diretor']" mat-button class="btn-side" style="color: white;">Diretor</a>      
+        <a [routerLink]="['/diretor']" mat-button class="btn-side" style="color: white;">Diretor</a>
       </div>
       <div class="btn-titulo">
-        <a [routerLink]="['/titulo']" mat-button class="btn-side" style="color: white;">Título</a>      
+        <a [routerLink]="['/titulo']" mat-button class="btn-side" style="color: white;">Título</a>
       </div>
       <div class="btn-item">
-        <a [routerLink]="['/item']" mat-button class="btn-side" style="color: white;">Item</a>      
+        <a [routerLink]="['/item']" mat-button class="btn-side" style="color: white;">Item</a>
       </div>
     </div>
+
+    <h2
+      style="margin: 0px; display: flex; justify-content: center; color: white; padding: 20px 0px; border-bottom: 2px solid white; margin-top: 20px;">
+      <mat-icon style="margin-right: 10px;">search</mat-icon>
+      Consultas
+    </h2>
   </mat-sidenav>
 
-  <mat-sidenav-content>    
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
