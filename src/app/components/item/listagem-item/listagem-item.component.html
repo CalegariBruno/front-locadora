@@ -23,7 +23,7 @@
             <ng-container matColumnDef="dtAquisicao">
                 <mat-header-cell *matHeaderCellDef> Data de Aquisição </mat-header-cell>
                 <mat-cell *matCellDef="let item" class="item-dtAquisicao">
-                    {{ item.dtAquisicao }}
+                    {{ item.dtAquisicao | date:'dd/MM/yyyy' }}
                 </mat-cell>
             </ng-container>
 
@@ -31,7 +31,7 @@
             <ng-container matColumnDef="titulo">
                 <mat-header-cell *matHeaderCellDef> Título </mat-header-cell>
                 <mat-cell *matCellDef="let item" class="item-titulo">
-                    {{ item.titulo }}
+                    {{ item.titulo.nome }}
                 </mat-cell>
             </ng-container>
 

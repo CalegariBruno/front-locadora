@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../../../models/item/item';
+import { Item, ItemList } from '../../../models/item/item';
 import { ItemService } from '../../../services/item/item.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -27,8 +27,8 @@ import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.comp
 })
 export class ListagemItemComponent implements OnInit{
 
-  itens: Item[] = [];
-  displayedColumns: string[] = ['numSerie', 'dtAquisicao', 'titulo' , 'tipoItem', 'acoes'];
+  itens: ItemList[] = [];
+  displayedColumns: string[] = ['numSerie', 'dtAquisicao', 'titulo', 'tipoItem', 'acoes'];
 
   constructor(
     private itemService: ItemService,
@@ -42,7 +42,7 @@ export class ListagemItemComponent implements OnInit{
 
   exibirItens(): void{
     this.itemService.listarItens().subscribe(
-      (data: Item[]) => {
+      (data: ItemList[]) => {
         this.itens = data;
         console.log(this.itens); 
       },
