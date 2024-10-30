@@ -13,6 +13,7 @@ import { Classe } from '../../../models/classe/classe';
 import { Diretor } from '../../../models/diretor/diretor';
 import { MatSelectModule } from '@angular/material/select';
 import { Ator } from '../../../models/ator/ator';
+import { AtorService } from '../../../services/ator/ator.service';
 
 @Component({
   selector: 'app-cadastro-titulo',
@@ -49,6 +50,7 @@ export class CadastroTituloComponent implements OnInit {
     private tituloService: TituloService,
     private classeService: ClasseService,
     private diretorService: DiretorService,
+    private atorService: AtorService,
     private router: Router,
     private route: ActivatedRoute,
     private toastrService: ToastrService
@@ -66,6 +68,11 @@ export class CadastroTituloComponent implements OnInit {
       this.diretoresList = diretores;
     });
 
+    // Carrega os atores
+    this.atorService.listarAtores().subscribe((atores) => {
+      this.atoresList = atores;
+    });
+
     // Pega o ID da URL para edição
     this.route.params.subscribe(params => {
       this.id = +params['id'];
@@ -81,6 +88,7 @@ export class CadastroTituloComponent implements OnInit {
   }
 
   onSubmit(): void {
+    
     console.log("ENTROU NO SUBMIT");
     console.log("FORM TITULO -> ", this.titulo);
 
