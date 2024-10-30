@@ -10,7 +10,8 @@
       </div>
 
       <mat-table [dataSource]="titulos" class="mat-elevation-z8">
-        <!-- Coluna do nome do ator -->
+
+        <!-- Coluna do nome do titulo -->
         <ng-container matColumnDef="nome">
           <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
           <mat-cell *matCellDef="let titulo" class="titulo-nome"> 
@@ -18,6 +19,38 @@
           </mat-cell>
         </ng-container>
   
+        <!-- Coluna do ano do titulo -->
+        <ng-container matColumnDef="ano">
+          <mat-header-cell *matHeaderCellDef> Ano </mat-header-cell>
+          <mat-cell *matCellDef="let titulo" class="titulo-ano"> 
+            {{ titulo.ano }} 
+          </mat-cell>
+        </ng-container>
+
+        <!-- Coluna da categoria do titulo -->
+        <ng-container matColumnDef="categoria">
+          <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+          <mat-cell *matCellDef="let titulo" class="titulo-categoria"> 
+            {{ titulo.categoria }} 
+          </mat-cell>
+        </ng-container>
+
+        <!-- Coluna do diretor do titulo -->
+        <ng-container matColumnDef="diretor">
+          <mat-header-cell *matHeaderCellDef> Diretor </mat-header-cell>
+          <mat-cell *matCellDef="let titulo" class="titulo-diretor"> 
+            {{ titulo.diretor.nome }} 
+          </mat-cell>
+        </ng-container>
+
+        <!-- Coluna da classe do titulo -->
+        <ng-container matColumnDef="classe">
+          <mat-header-cell *matHeaderCellDef> Classe </mat-header-cell>
+          <mat-cell *matCellDef="let titulo" class="titulo-classe"> 
+            {{ titulo.classe.nome }} 
+          </mat-cell>
+        </ng-container>
+
         <!-- Coluna dos botões de ação -->
         <ng-container matColumnDef="acoes">
           <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>

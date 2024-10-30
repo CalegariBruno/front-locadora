@@ -9,8 +9,8 @@ export interface Titulo {
     ano: number;
     sinopse: string;
     categoria: string;
-    atores: Ator[];
-    diretor: Diretor;
-    classe: Classe;    
+    atores: { id: number }[];
+    diretor: { id: number };
+    classe: { id: number };    
 
 }

@@ -28,7 +28,7 @@ import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.comp
 export class ListagemTituloComponent implements OnInit{
 
   titulos: Titulo[] = [];
-  displayedColumns: string[] = ['nome', 'acoes'];
+  displayedColumns: string[] = ['nome', 'ano', 'categoria',  'diretor', 'classe', 'acoes'];
 
   constructor(
     private tituloService: TituloService, 
