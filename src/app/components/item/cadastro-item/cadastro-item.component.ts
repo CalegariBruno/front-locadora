@@ -66,22 +66,16 @@ export class CadastroItemComponent {
         this.itemService.buscarItem(this.id).subscribe((item: Item) => {
           this.item = item;
         });
+         this.tipo = 'Editar'
+      } else {
+        this.tipo = 'Cadastrar'
       }
 
-    });
-
-    if (this.id) {
-      this.tipo = 'Editar'
-    } else {
-      this.tipo = 'Cadastrar'
-    }
+    });   
 
   }
 
-  onSubmit(): void {
-
-    console.log("ENTROU NO SUBMIT")
-    console.log("FORM ITEM -> ", this.item)
+  onSubmit(): void {    
 
     if (this.item.numSerie > 0 && this.item.dtAquisicao && this.item.tipoItem && this.item.titulo.id > 0) {
 

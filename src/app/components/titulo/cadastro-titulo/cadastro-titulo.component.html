@@ -1,1 +1,99 @@
-<p>cadastro-titulo works!</p>
+<div class="container">
+    <h2>{{tipo}} Título</h2>
+
+    <div class="formulario">
+        <form #tituloForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- Campo inserir nome -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome:</mat-label>
+                    <input matInput [(ngModel)]="titulo.nome" name="nome" required>
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir ano -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Ano:</mat-label>
+                    <input matInput [(ngModel)]="titulo.ano" name="ano" required type="number">
+                </mat-form-field>
+            </div>
+
+             <!-- Campo inserir categoria -->
+             <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Categoria:</mat-label>
+                    <input matInput [(ngModel)]="titulo.categoria" name="categoria" required>
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir classe -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione a classe</mat-label>
+                    <mat-select [(ngModel)]="titulo.classe.id" name="classe">
+                        @for (classe of classesList; track classe) {
+                        <mat-option [value]="classe.id">{{classe.nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir diretor -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione o diretor</mat-label>
+                    <mat-select [(ngModel)]="titulo.diretor.id" name="diretor">
+                        @for (diretor of diretoresList; track diretor) {
+                        <mat-option [value]="diretor.id">{{diretor.nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir sinopse -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Sinopse:</mat-label>
+                    <textarea  matInput [(ngModel)]="titulo.sinopse" name="sinopse" required></textarea>
+                </mat-form-field>
+            </div>
+
+            <!-- Campo de seleção de Atores -->
+            <!-- <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione os atores</mat-label>
+                    <mat-select [(ngModel)]="titulo.atores" name="atores" multiple required>
+                        <mat-option *ngFor="let ator of atoresList" [value]="ator.id">
+                            {{ ator.nome }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione os atores</mat-label>
+                    <mat-select [(ngModel)]="titulo.atores" name="diretor" multiple>
+                        @for (ator of atoresList; track ator) {
+                        <mat-option [value]="ator.id">{{ator.nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/item']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="tituloForm.invalid">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
