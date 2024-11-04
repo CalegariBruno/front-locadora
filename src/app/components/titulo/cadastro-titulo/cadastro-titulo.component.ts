@@ -19,9 +19,9 @@ import { AtorService } from '../../../services/ator/ator.service';
   selector: 'app-cadastro-titulo',
   standalone: true,
   imports: [
-    MatFormFieldModule,     
-    MatInputModule, 
-    FormsModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
     MatButtonModule,
     MatSelectModule,
     RouterLink
@@ -31,19 +31,19 @@ import { AtorService } from '../../../services/ator/ator.service';
 })
 export class CadastroTituloComponent implements OnInit {
 
-  titulo: Titulo = { 
-    nome: '', 
-    ano: 0, 
-    sinopse: '', 
-    categoria: '', 
-    classe: { id: 0 }, 
-    diretor: { id: 0 }, 
-    atores: [] 
+  titulo: Titulo = {
+    nome: '',
+    ano: 0,
+    sinopse: '',
+    categoria: '',
+    classe: { id: 0 },
+    diretor: { id: 0 },
+    atores: []
   };
   id!: number;
   tipo!: string;
-  classesList: Classe[] = [];    
-  diretoresList: Diretor[] = [];  
+  classesList: Classe[] = [];
+  diretoresList: Diretor[] = [];
   atoresList: Ator[] = [];
 
   constructor(
@@ -54,7 +54,7 @@ export class CadastroTituloComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
@@ -79,18 +79,25 @@ export class CadastroTituloComponent implements OnInit {
       if (this.id) {
         this.tituloService.buscarTitulo(this.id).subscribe((titulo) => {
           this.titulo = titulo;
+          console.log("FORM TITULO -> ", this.titulo);
         });
         this.tipo = 'Editar';
       } else {
         this.tipo = 'Cadastrar';
       }
     });
+
   }
 
   onSubmit(): void {
-    
+
     console.log("ENTROU NO SUBMIT");
     console.log("FORM TITULO -> ", this.titulo);
+
+    if (this.titulo.atores.length === 0) {
+      this.toastrService.error('Selecione pelo menos um ator.');
+      return;
+    }
 
     if (this.titulo.nome && this.titulo.ano > 0 && this.titulo.categoria && this.titulo.classe.id > 0 && this.titulo.diretor.id > 0) {
 
