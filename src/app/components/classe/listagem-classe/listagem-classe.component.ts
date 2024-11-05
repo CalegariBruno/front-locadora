@@ -53,7 +53,12 @@ export class ClasseComponent implements OnInit {
     this.classeService.deletarClasse(classe.id!).subscribe({
       next: ()=> {
         this.toastrService.success('Classe excluída com sucesso!')
-      }         
+        this.classes = this.classes.filter(c => c.id !== classe.id);
+      },
+      error: (err) => {
+        this.toastrService.error(err.error.msg);
+        console.error('Erro ao deletar classe', err);
+      }
     });
   }
 
@@ -62,8 +67,7 @@ export class ClasseComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.excluirclasse(classe);
-        this.classes = this.classes.filter(c => c.id !== classe.id);
+        this.excluirclasse(classe);        
       }
     });
   }

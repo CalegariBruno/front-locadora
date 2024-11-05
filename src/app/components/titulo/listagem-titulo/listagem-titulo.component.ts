@@ -56,7 +56,12 @@ export class ListagemTituloComponent implements OnInit{
     this.tituloService.deletarTitulo(titulo.id!).subscribe({
       next: ()=> {
         this.toastrService.success('Título excluído com sucesso!')
-      }         
+        this.titulos = this.titulos.filter(c => c.id !== titulo.id);
+      },
+      error: (err) => {
+        this.toastrService.error(err.error.msg);
+        console.error('Erro ao deletar título', err);
+      }           
     });
   }
 
@@ -65,8 +70,7 @@ export class ListagemTituloComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.excluirTitulo(titulo);
-        this.titulos = this.titulos.filter(c => c.id !== titulo.id);
+        this.excluirTitulo(titulo);        
       }
     });
   }

@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-listagem-de-atores',
   standalone: true,
-  imports: [    
+  imports: [
     CommonModule,
     MatTableModule,
     MatButtonModule,
@@ -31,8 +31,8 @@ export class ListagemDeAtoresComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'acoes'];
 
   constructor(
-    private atorService: AtorService, 
-    private dialog: MatDialog, 
+    private atorService: AtorService,
+    private dialog: MatDialog,
     private toastrService: ToastrService
   ) { }
 
@@ -44,29 +44,33 @@ export class ListagemDeAtoresComponent implements OnInit {
     this.atorService.listarAtores().subscribe(
       (data: Ator[]) => {
         this.atores = data;
-        console.log(this.atores); 
+        console.log(this.atores);
       },
-      (error) => {        
+      (error) => {
         console.error('Erro ao carregar a lista de atores', error);
-      }      
+      }
     );
-  }  
+  }
 
   excluirAtor(ator: Ator) {
     this.atorService.deletarAtor(ator.id!).subscribe({
-      next: ()=> {
+      next: () => {
         this.toastrService.success('Ator excluído com sucesso!')
-      }         
+        this.atores = this.atores.filter(c => c.id !== ator.id);
+      },
+      error: (err) => {
+        this.toastrService.error(err.error.msg);
+        console.error('Erro ao deletar o ator', err);
+      }
     });
   }
 
-  openDialog(ator: Ator): void{
+  openDialog(ator: Ator): void {
     const dialogRef = this.dialog.open(DialogExcluirComponent)
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.excluirAtor(ator);
-        this.atores = this.atores.filter(c => c.id !== ator.id);
       }
     });
   }

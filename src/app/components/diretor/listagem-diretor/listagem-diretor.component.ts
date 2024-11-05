@@ -53,7 +53,12 @@ export class DiretorComponent implements OnInit{
   excluirdiretor(diretor: Diretor) {
     this.diretorService.deletarDiretor(diretor.id!).subscribe({
       next: ()=> {
-        this.toastrService.success('Diretor excluído com sucesso!')
+        this.toastrService.success('Diretor excluído com sucesso!');
+        this.diretores = this.diretores.filter(c => c.id !== diretor.id);
+      },
+      error: (err) => {
+        this.toastrService.error(err.error.msg);
+        console.error('Erro ao deletar diretor', err);
       }         
     });
   }
@@ -63,8 +68,7 @@ export class DiretorComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.excluirdiretor(diretor);
-        this.diretores = this.diretores.filter(c => c.id !== diretor.id);
+        this.excluirdiretor(diretor);        
       }
     });
   }
