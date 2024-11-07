@@ -78,7 +78,7 @@ export class CadastroTituloComponent implements OnInit {
       this.id = +params['id'];
       if (this.id) {
         this.tituloService.buscarTitulo(this.id).subscribe((titulo) => {
-          this.titulo = titulo;
+          this.titulo = titulo;          
           console.log("FORM TITULO -> ", this.titulo);
         });
         this.tipo = 'Editar';
@@ -87,6 +87,10 @@ export class CadastroTituloComponent implements OnInit {
       }
     });
 
+  }
+
+  compareAtores(a: Ator, b: Ator): boolean {
+    return a && b ? a.id === b.id : a === b;
   }
 
   onSubmit(): void {
