@@ -32,7 +32,7 @@
             <div class="insere">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Selecione a classe</mat-label>
-                    <mat-select [(ngModel)]="titulo.classe.id" name="classe">
+                    <mat-select [(ngModel)]="titulo.classe.id" name="classe" required>
                         @for (classe of classesList; track classe) {
                         <mat-option [value]="classe.id">{{classe.nome}}</mat-option>
                         }
@@ -44,7 +44,7 @@
             <div class="insere">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Selecione o diretor</mat-label>
-                    <mat-select [(ngModel)]="titulo.diretor.id" name="diretor">
+                    <mat-select [(ngModel)]="titulo.diretor.id" name="diretor" required>
                         @for (diretor of diretoresList; track diretor) {
                         <mat-option [value]="diretor.id">{{diretor.nome}}</mat-option>
                         }
@@ -75,7 +75,7 @@
             <div class="insere">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Selecione os atores</mat-label>
-                    <mat-select [(ngModel)]="titulo.atores" name="atores" [compareWith]="compareAtores" multiple>
+                    <mat-select [(ngModel)]="titulo.atores" name="atores" [compareWith]="compareAtores" multiple required>
                         @for (ator of atoresList; track ator) {
                         <mat-option [value]="{ id: ator.id }">{{ator.nome}}</mat-option>
                         }
