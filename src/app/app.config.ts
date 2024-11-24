@@ -14,6 +14,8 @@ import { ListagemTituloComponent } from './components/titulo/listagem-titulo/lis
 import { CadastroTituloComponent } from './components/titulo/cadastro-titulo/cadastro-titulo.component';
 import { ListagemItemComponent } from './components/item/listagem-item/listagem-item.component';
 import { CadastroItemComponent } from './components/item/cadastro-item/cadastro-item.component';
+import { CadastroSocioComponent } from './components/socio/cadastro-socio/cadastro-socio/cadastro-socio.component';
+import { ListagemSocioComponent } from './components/socio/listagem-socio/listagem-socio/listagem-socio.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'ator', pathMatch: 'full' }, // Rota padrão
@@ -31,7 +33,10 @@ const routes: Routes = [
   { path: 'cadastroTitulo/:id', component: CadastroTituloComponent },
   { path: 'item', component: ListagemItemComponent },
   { path: 'cadastroItem', component: CadastroItemComponent },
-  { path: 'cadastroItem/:id', component: CadastroItemComponent }
+  { path: 'cadastroItem/:id', component: CadastroItemComponent },
+  { path: 'socio', component: ListagemSocioComponent },
+  { path: 'cadastroSocio', component: CadastroSocioComponent },
+  { path: 'cadastroSocio/:id', component: CadastroSocioComponent }
 ];
 
 export const appConfig: ApplicationConfig = {

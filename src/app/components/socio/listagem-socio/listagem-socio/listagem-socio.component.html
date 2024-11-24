@@ -1,0 +1,72 @@
+<div class="container">
+    <mat-card>
+        <div class="headerTable">
+            <mat-card-title>Listagem de Socios</mat-card-title>
+
+            <a [routerLink]="['/cadastroSocio']" mat-fab>
+                Novo Socio
+                <mat-icon style="color: black;">add_circle_outline</mat-icon>
+            </a>
+        </div>
+
+        <mat-table [dataSource]="socios" class="mat-elevation-z8">
+
+            <!-- coluna nome -->
+            <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="socio-nome">
+                    {{ socio.numSerie }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna endereço -->
+            <ng-container matColumnDef="endereco">
+                <mat-header-cell *matHeaderCellDef> Endereço </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="socio-endereco">
+                    {{ socio.endereco.bairro + " " + socio.endereco.rua + " " + socio.endereco.numero }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna telefone -->
+            <ng-container matColumnDef="telefone">
+                <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="socio-telefone">
+                    {{ socio.telefone }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna sexo -->
+            <ng-container matColumnDef="sexo">
+                <mat-header-cell *matHeaderCellDef> Sexo </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="socio-sexo">
+                    {{ socio.sexo }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna cpf -->
+            <ng-container matColumnDef="cpf">
+                <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="socio-cpf">
+                    {{ socio.cpf }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna dos botões de ação -->
+            <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="acoes" style="justify-content: center;">
+                    <a [routerLink]="['/cadastrosocio', socio.id]" mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-icon-button color="warn" (click)="openDialog(socio)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Header e linhas da tabela -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card>
+</div>

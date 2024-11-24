@@ -1,0 +1,83 @@
+<div class="container">
+    <h2>{{tipo}} Socio</h2>
+
+    <div class="formulario">
+        <form #socioForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- Campo inserir nome -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome:</mat-label>
+                    <input matInput [(ngModel)]="socio.nome" name="nome" required type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir bairro -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Bairro:</mat-label>
+                    <input matInput [(ngModel)]="socio.endereco.bairro" name="bairro" required type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir rua -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Rua:</mat-label>
+                    <input matInput [(ngModel)]="socio.endereco.rua" name="rua" required type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir numero -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>N°:</mat-label>
+                    <input matInput [(ngModel)]="socio.endereco.numero" name="numero" required type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir telefone -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Telefone:</mat-label>
+                    <input matInput [(ngModel)]="socio.telefone" name="telefone" required type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir cpf -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>CPF:</mat-label>
+                    <input matInput [(ngModel)]="socio.cpf" name="cpf" required type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir data de nascimento -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Data Nascimento:</mat-label>
+                    <input matInput [(ngModel)]="socio.dataNasc" name="dataNasc" required type="date">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo selecionar sexo -->
+            <mat-radio-group [(ngModel)]="socio.sexo" name="sexo">
+                <mat-label>Sexo:</mat-label>
+                <mat-radio-button value='M'>Masculino</mat-radio-button>
+                <mat-radio-button value='F'>Feminino</mat-radio-button>
+            </mat-radio-group>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/socio']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="socioForm.invalid">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

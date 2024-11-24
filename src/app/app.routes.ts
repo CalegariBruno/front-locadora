@@ -10,6 +10,8 @@ import { ListagemTituloComponent } from './components/titulo/listagem-titulo/lis
 import { CadastroTituloComponent } from './components/titulo/cadastro-titulo/cadastro-titulo.component';
 import { ListagemItemComponent } from './components/item/listagem-item/listagem-item.component';
 import { CadastroItemComponent } from './components/item/cadastro-item/cadastro-item.component';
+import { CadastroSocioComponent } from './components/socio/cadastro-socio/cadastro-socio/cadastro-socio.component';
+import { ListagemSocioComponent } from './components/socio/listagem-socio/listagem-socio/listagem-socio.component';
 
 export const routes: Routes = [
     {
@@ -76,5 +78,17 @@ export const routes: Routes = [
         path: 'cadastroItem/:id',
         component: CadastroItemComponent
     },
+    {
+        path: 'socio',
+        component: ListagemSocioComponent
+    },
+    {
+        path: 'cadastroSocio',
+        component: CadastroSocioComponent
+    },
+    {
+        path: 'cadastroSocio/:id',
+        component: CadastroSocioComponent
+    }
     
 ];
