@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Socio, SocioList } from "../../models/socio/socio";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Socio } from "../../models/socio/socio";
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +14,8 @@ export class SocioService {
     constructor(private http: HttpClient) { }
 
     // LISTAR SOCIOS
-    listarSocios(): Observable<SocioList[]> {
-        return this.http.get<SocioList[]>(`${this.url}/listar`);
+    listarSocios(): Observable<Socio[]> {
+        return this.http.get<Socio[]>(`${this.url}/listar`);
     }
 
     // CRIAR SOCIO

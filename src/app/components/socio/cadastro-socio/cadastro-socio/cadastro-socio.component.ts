@@ -3,7 +3,6 @@ import { Socio } from '../../../../models/socio/socio';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SocioService } from '../../../../services/socio/socio.service';
-import { TituloService } from '../../../../services/titulo/titulo.service';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,15 +29,11 @@ export class CadastroSocioComponent implements OnInit{
   
   socio: Socio = { 
     nome: '',
-    endereco: {
-      bairro: '',
-      rua: '',
-      numero: 0
-    },
+    endereco: '',
     telefone: '',
     sexo: 'M',
     cpf: '',
-    dataNasc: ''
+    dataNascimento: ''
   };
   id!: number;
   tipo!: string;
@@ -48,14 +43,13 @@ export class CadastroSocioComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute,
     private toastrService: ToastrService,
-    private tituloService: TituloService, 
-  ) { }
+    ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
 
       this.id = +params['id'];
-
+      console.log(this.socio)
       if (this.id) {
         this.socioService.buscarSocio(this.id).subscribe((socio: Socio) => {
           this.socio = socio;
@@ -73,7 +67,7 @@ export class CadastroSocioComponent implements OnInit{
 
   onSubmit(): void {    
 
-    if (this.socio.nome && this.socio.endereco && this.socio.telefone && this.socio.cpf && this.socio.sexo && this.socio.dataNasc) {
+    if (this.socio.nome && this.socio.endereco && this.socio.telefone && this.socio.cpf && this.socio.sexo && this.socio.dataNascimento) {
 
       if (this.id) { // EDITAR socio        
 

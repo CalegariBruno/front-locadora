@@ -12,27 +12,11 @@
                 </mat-form-field>
             </div>
 
-            <!-- Campo inserir bairro -->
+            <!-- Campo inserir endereco -->
             <div class="insere">
                 <mat-form-field style="width: 100%;">
-                    <mat-label>Bairro:</mat-label>
-                    <input matInput [(ngModel)]="socio.endereco.bairro" name="bairro" required type="text">
-                </mat-form-field>
-            </div>
-
-            <!-- Campo inserir rua -->
-            <div class="insere">
-                <mat-form-field style="width: 100%;">
-                    <mat-label>Rua:</mat-label>
-                    <input matInput [(ngModel)]="socio.endereco.rua" name="rua" required type="text">
-                </mat-form-field>
-            </div>
-
-            <!-- Campo inserir numero -->
-            <div class="insere">
-                <mat-form-field style="width: 100%;">
-                    <mat-label>N°:</mat-label>
-                    <input matInput [(ngModel)]="socio.endereco.numero" name="numero" required type="text">
+                    <mat-label>Endereco:</mat-label>
+                    <input matInput [(ngModel)]="socio.endereco" name="endereco" required type="text">
                 </mat-form-field>
             </div>
 
@@ -56,7 +40,7 @@
             <div class="insere">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Data Nascimento:</mat-label>
-                    <input matInput [(ngModel)]="socio.dataNasc" name="dataNasc" required type="date">
+                    <input matInput [(ngModel)]="socio.dataNascimento" name="dataNasc" required type="date">
                 </mat-form-field>
             </div>
 

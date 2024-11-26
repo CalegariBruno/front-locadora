@@ -7,9 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Socio, SocioList } from '../../../../models/socio/socio';
 import { SocioService } from '../../../../services/socio/socio.service';
 import { DialogExcluirComponent } from '../../../dialog-excluir/dialog-excluir.component';
+import { Socio } from '../../../../models/socio/socio';
 
 @Component({
   selector: 'app-listagem-socio',
@@ -26,7 +26,7 @@ import { DialogExcluirComponent } from '../../../dialog-excluir/dialog-excluir.c
   styleUrl: './listagem-socio.component.css'
 })
 export class ListagemSocioComponent implements OnInit{
-  socios: SocioList[] = [];
+  socios: Socio[] = [];
   displayedColumns: string[] = ['nome', 'endereco','telefone', 'sexo', 'cpf', 'acoes'];
 
   constructor(
@@ -41,7 +41,7 @@ export class ListagemSocioComponent implements OnInit{
 
   exibirItens(): void{
     this.socioService.listarSocios().subscribe(
-      (data: SocioList[]) => {
+      (data: Socio[]) => {
         this.socios = data;
         console.log(this.socios); 
       },

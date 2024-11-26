@@ -10,7 +10,7 @@ import { MatDialogContent } from '@angular/material/dialog';
     MatDialogActions,
     MatDialogContent,
     MatButtonModule, 
-    MatDialogTitle],
+  ],
   templateUrl: './dialog-excluir.component.html',
   styleUrl: './dialog-excluir.component.css',
 })  
