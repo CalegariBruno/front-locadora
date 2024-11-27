@@ -5,9 +5,8 @@ export interface Socio {
     nome: string;
     endereco: string;
     telefone: string;
-    sexo: 'M' | 'F';
+    sexo: string;
     cpf: string;
     dataNascimento: string;
-
 }
 

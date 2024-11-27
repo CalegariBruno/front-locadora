@@ -104,9 +104,7 @@ export class CadastroItemComponent {
             console.error('Erro ao salvar item', err);
           }
         });
-
       }
     }
   }
-
 }

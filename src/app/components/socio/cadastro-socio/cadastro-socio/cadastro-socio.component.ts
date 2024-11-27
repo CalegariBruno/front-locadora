@@ -49,7 +49,7 @@ export class CadastroSocioComponent implements OnInit{
     this.route.params.subscribe(params => {
 
       this.id = +params['id'];
-      console.log(this.socio)
+    
       if (this.id) {
         this.socioService.buscarSocio(this.id).subscribe((socio: Socio) => {
           this.socio = socio;
@@ -67,9 +67,9 @@ export class CadastroSocioComponent implements OnInit{
 
   onSubmit(): void {    
 
-    if (this.socio.nome && this.socio.endereco && this.socio.telefone && this.socio.cpf && this.socio.sexo && this.socio.dataNascimento) {
+    if( this.socio.nome && this.socio.cpf && this.socio.dataNascimento && this.socio.endereco && this.socio.telefone && this.socio.sexo ) {
 
-      if (this.id) { // EDITAR socio        
+      if (this.id) { // EDITAR SOCIO        
 
         this.socioService.editarSocio(this.socio).subscribe({
           next: () => {
@@ -82,8 +82,7 @@ export class CadastroSocioComponent implements OnInit{
           }
         });
 
-      } else { // CRIAR socio
-
+      } else { // CRIAR SOCIO
         this.socioService.criarSocio(this.socio).subscribe({
           next: () => {
             this.router.navigate(['/socio']);
@@ -97,5 +96,4 @@ export class CadastroSocioComponent implements OnInit{
       }
     }
   }
-
 }

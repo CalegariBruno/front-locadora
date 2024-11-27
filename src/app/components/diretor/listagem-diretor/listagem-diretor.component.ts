@@ -33,7 +33,8 @@ export class DiretorComponent implements OnInit{
   constructor(
     private diretorService: DiretorService, 
     private toastrService: ToastrService, 
-    private dialog: MatDialog) { }
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.exibirDiretores();
@@ -42,7 +43,7 @@ export class DiretorComponent implements OnInit{
   exibirDiretores(): void {
     this.diretorService.listarDiretores().subscribe(
       (data: Diretor[]) => {
-        this.diretores = data;         
+        this.diretores = data;       
       },
       (error) => {
         console.error('Erro ao carregar a lista de diretores', error);

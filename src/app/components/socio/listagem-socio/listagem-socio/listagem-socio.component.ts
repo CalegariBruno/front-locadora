@@ -27,7 +27,7 @@ import { Socio } from '../../../../models/socio/socio';
 })
 export class ListagemSocioComponent implements OnInit{
   socios: Socio[] = [];
-  displayedColumns: string[] = ['nome', 'endereco','telefone', 'sexo', 'cpf', 'acoes'];
+  displayedColumns: string[] = ['nome', 'endereco','telefone', 'sexo', 'cpf', 'dataNascimento', 'acoes'];
 
   constructor(
     private socioService: SocioService,
@@ -36,10 +36,10 @@ export class ListagemSocioComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-      this.exibirItens();
+      this.exibirSocios();
   }
 
-  exibirItens(): void{
+  exibirSocios(): void{
     this.socioService.listarSocios().subscribe(
       (data: Socio[]) => {
         this.socios = data;
@@ -55,6 +55,10 @@ export class ListagemSocioComponent implements OnInit{
     this.socioService.deletarSocio(socio.id!).subscribe({
       next: ()=> {
         this.toastrService.success('Socio excluído com sucesso!')
+      },
+      error: (err) => {
+        this.toastrService.error(err.error.msg);
+        console.error('Erro ao deletar socio', err);
       }         
     });
   }

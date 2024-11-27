@@ -12,6 +12,8 @@ import { ListagemItemComponent } from './components/item/listagem-item/listagem-
 import { CadastroItemComponent } from './components/item/cadastro-item/cadastro-item.component';
 import { CadastroSocioComponent } from './components/socio/cadastro-socio/cadastro-socio/cadastro-socio.component';
 import { ListagemSocioComponent } from './components/socio/listagem-socio/listagem-socio/listagem-socio.component';
+import { ListagemDependenteComponent } from './components/dependente/listagem-dependente/listagem-dependente/listagem-dependente.component';
+import { CadastroDependenteComponent } from './components/dependente/cadastro-dependente/cadastro-dependente/cadastro-dependente.component';
 
 export const routes: Routes = [
     {
@@ -89,6 +91,18 @@ export const routes: Routes = [
     {
         path: 'cadastroSocio/:id',
         component: CadastroSocioComponent
-    }
+    },
+    {
+        path: 'dependente',
+        component: ListagemDependenteComponent
+    },
+    {
+        path: 'cadastroDependente',
+        component: CadastroDependenteComponent
+    },
+    {
+        path: 'cadastroDependente/:id',
+        component: CadastroDependenteComponent
+    } 
     
 ];

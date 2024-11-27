@@ -1,0 +1,49 @@
+<div class="container">
+    <mat-card>
+      <div class="headerTable">
+        <mat-card-title>Listagem de Dependente</mat-card-title>
+  
+      <a [routerLink]="['/cadastroDependente']" mat-fab>
+        Novo Dependente
+        <mat-icon style="color: black;">add_circle_outline</mat-icon>       
+      </a>
+      </div>
+
+      <mat-table [dataSource]="dependentes" class="mat-elevation-z8">
+
+        <!-- Coluna do nome  -->
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let dependente" class="dependente-nome"> 
+            {{ dependente.nome }} 
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Coluna do ano do dependente -->
+        <ng-container matColumnDef="dataNascimento">
+          <mat-header-cell *matHeaderCellDef> Nascimento </mat-header-cell>
+          <mat-cell *matCellDef="let dependente" class="dependente-dataNascimento"> 
+            {{ dependente.dataNascimento }} 
+          </mat-cell>
+        </ng-container>
+
+        <!-- Coluna dos botões de ação -->
+        <ng-container matColumnDef="acoes">
+          <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
+          <mat-cell *matCellDef="let dependente" class="acoes" style="justify-content: center;"> 
+            <a [routerLink]="['/cadastroDependente', dependente.id]" mat-icon-button color="primary" >
+              <mat-icon>edit</mat-icon>
+            </a>
+            <button mat-icon-button color="warn" (click)="openDialog(dependente)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Header e linhas da tabela -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card>
+  </div>
+  
