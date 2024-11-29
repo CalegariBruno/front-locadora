@@ -14,6 +14,9 @@ import { CadastroSocioComponent } from './components/socio/cadastro-socio/cadast
 import { ListagemSocioComponent } from './components/socio/listagem-socio/listagem-socio/listagem-socio.component';
 import { ListagemDependenteComponent } from './components/dependente/listagem-dependente/listagem-dependente/listagem-dependente.component';
 import { CadastroDependenteComponent } from './components/dependente/cadastro-dependente/cadastro-dependente/cadastro-dependente.component';
+import { LocacaoComponent } from './components/locacao/locacao/locacao.component';
+import { ListagemLocacaoComponent } from './components/locacao/listagem-locacao/listagem-locacao/listagem-locacao.component';
+import { DevolucaoComponent } from './components/locacao/locacao-devolucao/devolucao/devolucao.component';
 
 export const routes: Routes = [
     {
@@ -103,6 +106,17 @@ export const routes: Routes = [
     {
         path: 'cadastroDependente/:id',
         component: CadastroDependenteComponent
+    },
+    {   path: 'locacao', 
+        component: LocacaoComponent 
+    },
+    {
+        path: 'listagemLocacao',
+        component: ListagemLocacaoComponent
+    },
+    {
+        path: 'devolucao',
+        component: DevolucaoComponent
     } 
     
 ];

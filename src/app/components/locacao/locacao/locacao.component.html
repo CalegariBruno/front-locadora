@@ -1,0 +1,59 @@
+<div class="container">
+    <h2>{{tipo}} Locaçao</h2>
+
+    <div class="formulario">
+        <form #locacaoForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- Campo inserir item -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione o item</mat-label>
+                    <mat-select [(ngModel)]="locacao.item.id" name="item" required>
+                        @for (item of itemsList; track item) {
+                        <mat-option [value]="item.id">{{item.titulo.nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir cliente -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione o cliente</mat-label>
+                    <mat-select [(ngModel)]="locacao.cliente.id" name="cliente" required>
+                        @for (cliente of clientesList; track cliente) {
+                        <mat-option [value]="cliente.id">{{cliente.nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Valor:</mat-label>
+                    <input matInput [(ngModel)]="locacao.valor" name="valor" required type="number">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir data prevista -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Data prevista</mat-label>
+                    <input matInput [(ngModel)]="locacao.dtPrevista" name="dtPrevista" required type="date">
+                </mat-form-field>
+            </div>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/locacao']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="locacaoForm.invalid">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
