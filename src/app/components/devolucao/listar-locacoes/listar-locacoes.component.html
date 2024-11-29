@@ -1,1 +1,77 @@
-<p>listar-locacoes works!</p>
+<div class="container">
+    <mat-card>
+        <div class="headerTable">
+            <mat-card-title>Listagem de Locações</mat-card-title>
+        </div>
+
+        <mat-table [dataSource]="locacoes" class="mat-elevation-z8">
+
+            <!-- Coluna do nome do cliente -->
+            <ng-container matColumnDef="cliente">
+                <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+                <mat-cell *matCellDef="let locacao" class="locacao-cliente-nome">
+                    {{ locacao.cliente.nome }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna do nome do item -->
+            <ng-container matColumnDef="item">
+                <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+                <mat-cell *matCellDef="let locacao" class="locacao-item-nome">
+                    {{ locacao.item.titulo.nome }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna do valor -->
+            <ng-container matColumnDef="valor">
+                <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+                <mat-cell *matCellDef="let locacao" class="classe-valor">
+                    R$ {{ locacao.valorCobrado }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna da data -->
+            <ng-container matColumnDef="dt_devolucao">
+                <mat-header-cell *matHeaderCellDef> Data Devolução </mat-header-cell>
+                <mat-cell *matCellDef="let locacao" class="classe-data-devolucao">
+                    {{ locacao.dtDevolucaoEfetiva | date:'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna de pago -->
+            <ng-container matColumnDef="pago">
+                <mat-header-cell *matHeaderCellDef> Pago </mat-header-cell>
+                <mat-cell *matCellDef="let locacao" class="classe-data-devolucao">
+                    {{ locacao.pago ? 'Sim' : 'Não' }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- coluna de Devolução -->
+            <ng-container matColumnDef="devolucao">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Devolução </mat-header-cell>
+                <mat-cell *matCellDef="let locacao" class="classe-data-devolucao" style="justify-content: center;">
+                    <a [routerLink]="['/registrarDevolucao']" mat-icon-button color="primary">
+                        <mat-icon>undo</mat-icon>
+                    </a>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna dos botões de ação -->
+            <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let locacao" class="acoes" style="justify-content: center;">
+                    <a [routerLink]="['/locacao', locacao.id]" mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-icon-button color="warn" (click)="openDialog(locacao)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Header e linhas da tabela -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card>
+</div>

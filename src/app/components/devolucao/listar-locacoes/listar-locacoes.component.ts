@@ -31,6 +31,8 @@ import { LocacaoService } from '../../../services/locacao/locacao.service';
 export class ListarLocacoesComponent implements OnInit{
 
   locacoes: Locacao[] = [];
+  displayedColumns: string[] = ['cliente', 'item', 'valor',  'dt_devolucao', 'pago', 'devolucao', 'acoes'];
+
 
   constructor(
     private locacaoService: LocacaoService,
@@ -66,4 +68,13 @@ export class ListarLocacoesComponent implements OnInit{
     });
   }
 
+  openDialog(locacao: Locacao): void {
+    const dialogRef = this.dialog.open(DialogExcluirComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.excluirLocacao(locacao);
+      }
+    });
+  }
 }
