@@ -10,12 +10,15 @@ import { ListagemTituloComponent } from './components/titulo/listagem-titulo/lis
 import { CadastroTituloComponent } from './components/titulo/cadastro-titulo/cadastro-titulo.component';
 import { ListagemItemComponent } from './components/item/listagem-item/listagem-item.component';
 import { CadastroItemComponent } from './components/item/cadastro-item/cadastro-item.component';
+import { RegistrarLocacaoComponent } from './components/locacao/registrar-locacao/registrar-locacao.component';
+import { ListarLocacoesComponent } from './components/devolucao/listar-locacoes/listar-locacoes.component';
+import { RegistrarDevolucaoComponent } from './components/devolucao/registrar-devolucao/registrar-devolucao.component';
 
 export const routes: Routes = [
     {
         path: '',
         component: AppComponent
-    }, 
+    },
     {
         path: 'ator',
         component: ListagemDeAtoresComponent
@@ -27,7 +30,7 @@ export const routes: Routes = [
     {
         path: 'cadastroAtor/:id',
         component: CadastroAtorComponent
-    },    
+    },
     {
         path: 'classe',
         component: ClasseComponent
@@ -64,9 +67,9 @@ export const routes: Routes = [
         path: 'cadastroTitulo/:id',
         component: CadastroTituloComponent
     },
-    {    
+    {
         path: 'item',
-        component: ListagemItemComponent 
+        component: ListagemItemComponent
     },
     {
         path: 'cadastroItem',
@@ -76,5 +79,9 @@ export const routes: Routes = [
         path: 'cadastroItem/:id',
         component: CadastroItemComponent
     },
-    
+    { path: 'locacao', component: RegistrarLocacaoComponent },
+    { path: 'locacao/:id', component: RegistrarLocacaoComponent },
+    { path: 'devolucao', component: ListarLocacoesComponent },
+    { path: 'registrarDevolucao', component: RegistrarDevolucaoComponent }
+
 ];
