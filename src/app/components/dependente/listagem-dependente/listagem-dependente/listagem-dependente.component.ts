@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Dependente } from '../../../../models/dependente.java/dependente';
+import { Component, OnInit } from '@angular/core';
+import { Dependente } from '../../../../models/cliente/dependente';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
 import { DialogExcluirComponent } from '../../../dialog-excluir/dialog-excluir.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { DependenteService } from '../../../../services/dependente/dependente.service';
+import { ClienteService } from '../../../../services/cliente/cliente.service';
 
 @Component({
   selector: 'app-listagem-dependente',
@@ -25,25 +25,41 @@ import { DependenteService } from '../../../../services/dependente/dependente.se
   templateUrl: './listagem-dependente.component.html',
   styleUrl: './listagem-dependente.component.css'
 })
-export class ListagemDependenteComponent {
+export class ListagemDependenteComponent implements OnInit{
   dependentes: Dependente[] = [];
-  displayedColumns: string[] = ['nome', 'dataNascimento', 'sexo', 'acoes']
+  displayedColumns: string[] = ['nome', 'dataNascimento', 'sexo', 'socio', 'acoes'];
 
   constructor(
-    private dependenteService: DependenteService, 
+    private clienteService: ClienteService,
     private dialog: MatDialog, 
     private toastrService: ToastrService
   ) { }
 
+  ngOnInit(): void {
+    this.exibirDependentes();
+  }
+
+  exibirDependentes(): void{
+    this.clienteService.listarDependentes().subscribe(
+      (data: Dependente[]) => {
+        this.dependentes = data;
+        console.log(this.dependentes); 
+      },
+      (error) => {        
+        console.error('Erro ao carregar a lista de dependentes', error);
+      }      
+    );
+  }
+
   excluirDependente(dependente: Dependente) {
-    this.dependenteService.deletarDependente(dependente.id!).subscribe({
+    this.clienteService.deletarDependente(dependente.id!).subscribe({
       next: ()=> {
-        this.toastrService.success('Título excluído com sucesso!')
+        this.toastrService.success('Dependente excluído com sucesso!')
         this.dependentes = this.dependentes.filter(c => c.id !== dependente.id);
       },
       error: (err) => {
         this.toastrService.error(err.error.msg);
-        console.error('Erro ao deletar título', err);
+        console.error('Erro ao deletar dependente', err);
       }           
     });
   }

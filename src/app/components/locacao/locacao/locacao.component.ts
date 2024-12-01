@@ -10,9 +10,9 @@ import { Locacao } from '../../../models/locacao/locacao';
 import { Cliente } from '../../../models/cliente/cliente';
 import { ToastrService } from 'ngx-toastr';
 import { LocacaoService } from '../../../services/locacao/locacao.service';
-import { ClienteService } from '../../../services/cliente/cliente.service';
 import { ItemList } from '../../../models/item/item';
 import { ItemService } from '../../../services/item/item.service';
+import { ClienteService } from '../../../services/cliente/cliente.service';
 
 @Component({
   selector: 'app-locacao',
@@ -35,7 +35,8 @@ export class LocacaoComponent {
     item: { id: 0 },
     cliente: { id: 0 },
     valor: 0,
-    dtPrevista: ''
+    dtPrevista: '',
+    pago: true
   }
   id!: number;
   tipo!: string;
@@ -53,7 +54,7 @@ export class LocacaoComponent {
 
   ngOnInit(): void {
 
-    // Carrega os locacaos ao iniciar o componente
+    // Carrega os items ao iniciar o componente
     this.itemService.listarItens().subscribe((items: ItemList[]) => {
       this.itemsList = items;
     });

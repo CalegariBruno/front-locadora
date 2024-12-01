@@ -1,1 +1,56 @@
-<p>cadastro-dependente works!</p>
+<div class="container">
+    <h2>{{tipo}} Dependente</h2>
+
+    <div class="formulario">
+        <form #dependenteForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- Campo inserir nome -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome:</mat-label>
+                    <input matInput [(ngModel)]="dependente.nome" name="nome" required type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo inserir data de nascimento -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Data Nascimento:</mat-label>
+                    <input matInput [(ngModel)]="dependente.dataNascimento" name="dataNasc" required type="date">
+                </mat-form-field>
+            </div>
+
+            <!-- Campo selecionar sexo -->
+            <mat-radio-group [(ngModel)]="dependente.sexo" name="sexo">
+                <mat-label>Sexo:</mat-label>
+                <mat-radio-button value='M'>Masculino</mat-radio-button>
+                <mat-radio-button value='F'>Feminino</mat-radio-button>
+            </mat-radio-group>
+
+            <!-- Campo inserir socio -->
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione o sócio</mat-label>
+                    <mat-select [(ngModel)]="dependente.socio.id" name="socio" required>
+                        @for (socio of sociosList; track socio) {
+                        <mat-option [value]="socio.id">{{socio.nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/dependente']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="dependenteForm.invalid">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

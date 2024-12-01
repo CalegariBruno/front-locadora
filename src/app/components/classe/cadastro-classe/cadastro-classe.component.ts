@@ -27,7 +27,7 @@ export class CadastroClasseComponent implements OnInit {
   classe: Classe = {
     nome: '', 
     valor: 0, 
-    prazoDevolucao: '' 
+    prazoDevolucao: 0 
   };
   id!: number;
   tipo!: string;
@@ -65,9 +65,7 @@ export class CadastroClasseComponent implements OnInit {
 
     if (this.classe.nome && this.classe.valor > 0 && this.classe.prazoDevolucao) {
 
-      if (this.id) { // EDITAR CLASSE
-
-        
+      if (this.id) { // EDITAR CLASSE     
         
         this.classeService.editarClasse(this.classe).subscribe({
           next: () => {            

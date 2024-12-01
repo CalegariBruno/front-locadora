@@ -19,11 +19,27 @@
           </mat-cell>
         </ng-container>
   
-        <!-- Coluna do ano do dependente -->
+        <!-- Coluna do ano do nascimento -->
         <ng-container matColumnDef="dataNascimento">
           <mat-header-cell *matHeaderCellDef> Nascimento </mat-header-cell>
           <mat-cell *matCellDef="let dependente" class="dependente-dataNascimento"> 
-            {{ dependente.dataNascimento }} 
+              {{ dependente.dataNascimento | date:'dd/MM/yyyy' }} 
+          </mat-cell>
+        </ng-container>
+
+        <!-- coluna sexo -->
+        <ng-container matColumnDef="sexo">
+          <mat-header-cell *matHeaderCellDef> Sexo </mat-header-cell>
+          <mat-cell *matCellDef="let dependente" class="dependente-sexo">
+              {{ dependente.sexo }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- coluna sócio -->
+        <ng-container matColumnDef="socio">
+          <mat-header-cell *matHeaderCellDef> Socio </mat-header-cell>
+          <mat-cell *matCellDef="let dependente" class="dependente-socio">
+              {{ dependente.socio.nome }}
           </mat-cell>
         </ng-container>
 

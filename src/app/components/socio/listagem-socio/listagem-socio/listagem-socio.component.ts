@@ -7,9 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { SocioService } from '../../../../services/socio/socio.service';
 import { DialogExcluirComponent } from '../../../dialog-excluir/dialog-excluir.component';
-import { Socio } from '../../../../models/socio/socio';
+import { Socio } from '../../../../models/cliente/socio';
+import { ClienteService } from '../../../../services/cliente/cliente.service';
 
 @Component({
   selector: 'app-listagem-socio',
@@ -30,7 +30,7 @@ export class ListagemSocioComponent implements OnInit{
   displayedColumns: string[] = ['nome', 'endereco','telefone', 'sexo', 'cpf', 'dataNascimento', 'acoes'];
 
   constructor(
-    private socioService: SocioService,
+    private clienteService: ClienteService,
     private dialog: MatDialog,
     private toastrService: ToastrService
   ){}
@@ -40,7 +40,7 @@ export class ListagemSocioComponent implements OnInit{
   }
 
   exibirSocios(): void{
-    this.socioService.listarSocios().subscribe(
+    this.clienteService.listarSocios().subscribe(
       (data: Socio[]) => {
         this.socios = data;
         console.log(this.socios); 
@@ -52,7 +52,7 @@ export class ListagemSocioComponent implements OnInit{
   }
 
   excluirSocio(socio: Socio) {
-    this.socioService.deletarSocio(socio.id!).subscribe({
+    this.clienteService.deletarSocio(socio.id!).subscribe({
       next: ()=> {
         this.toastrService.success('Socio excluído com sucesso!')
       },

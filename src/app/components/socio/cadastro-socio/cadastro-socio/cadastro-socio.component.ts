@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Socio } from '../../../../models/socio/socio';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { SocioService } from '../../../../services/socio/socio.service';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import { ClienteService } from '../../../../services/cliente/cliente.service';
+import { Socio } from '../../../../models/cliente/socio';
 
 @Component({
   selector: 'app-cadastro-socio',
@@ -33,25 +33,31 @@ export class CadastroSocioComponent implements OnInit{
     telefone: '',
     sexo: 'M',
     cpf: '',
-    dataNascimento: ''
+    dataNascimento: '',
+    numeroInscricao: 0,
+    ativo: true
   };
   id!: number;
   tipo!: string;
 
   constructor(
-    private socioService: SocioService,
+    private clienteService: ClienteService,
     private router: Router,
     private route: ActivatedRoute,
     private toastrService: ToastrService,
     ) { }
 
   ngOnInit(): void {
+
+    // Gera um numero de inscrição
+    this.socio.numeroInscricao = this.gerarNumeroInscricao();
+
     this.route.params.subscribe(params => {
 
       this.id = +params['id'];
     
       if (this.id) {
-        this.socioService.buscarSocio(this.id).subscribe((socio: Socio) => {
+        this.clienteService.buscarSocio(this.id).subscribe((socio: Socio) => {
           this.socio = socio;
         })
       }
@@ -68,10 +74,16 @@ export class CadastroSocioComponent implements OnInit{
   onSubmit(): void {    
 
     if( this.socio.nome && this.socio.cpf && this.socio.dataNascimento && this.socio.endereco && this.socio.telefone && this.socio.sexo ) {
+      
+      if ( this.socio.sexo == 'M' ) {
+        this.socio.sexo = 'Masculino'
+      } else {
+        this.socio.sexo = 'Feminino'
+      }
 
       if (this.id) { // EDITAR SOCIO        
 
-        this.socioService.editarSocio(this.socio).subscribe({
+        this.clienteService.editarSocio(this.socio).subscribe({
           next: () => {
             this.router.navigate(['/socio']);
             this.toastrService.success('socio editado com sucesso!')
@@ -83,7 +95,7 @@ export class CadastroSocioComponent implements OnInit{
         });
 
       } else { // CRIAR SOCIO
-        this.socioService.criarSocio(this.socio).subscribe({
+        this.clienteService.criarSocio(this.socio).subscribe({
           next: () => {
             this.router.navigate(['/socio']);
             this.toastrService.success('Socio salvo com sucesso!')
@@ -95,5 +107,9 @@ export class CadastroSocioComponent implements OnInit{
         });
       }
     }
+  }
+
+  gerarNumeroInscricao(): number {
+    return Math.floor(100000000 + Math.random() * 900000000); 
   }
 }
