@@ -50,7 +50,7 @@ export class RegistrarLocacaoComponent implements OnInit {
   ngOnInit(): void {
 
     // Carregar os clientes
-    this.clienteService.listarClientes().subscribe((clientes) => {
+    this.clienteService.listarAtivos().subscribe((clientes) => {
       this.clientesList = clientes;
     });
 
