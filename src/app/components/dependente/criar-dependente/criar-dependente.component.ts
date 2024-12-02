@@ -11,6 +11,11 @@ import { Dependente } from '../../../models/cliente/dependente/dependente';
 import { Socio } from '../../../models/cliente/socio/socio';
 import { MatSelectModule } from '@angular/material/select';
 
+interface TiposSexo {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-criar-dependente',
   standalone: true,
@@ -36,7 +41,11 @@ export class CadastroDependenteComponent implements OnInit {
   };
   id!: number;
   tipo!: string;
-  sociosList: Socio[] = []
+  sociosList: Socio[] = [];
+  tiposSexo: TiposSexo[] = [
+    { value: 'Masculino', viewValue: 'Masculino' },
+    { value: 'Feminino', viewValue: 'Feminino' },
+  ];
 
   constructor(
     private clienteService: ClienteService,
