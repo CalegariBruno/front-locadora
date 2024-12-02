@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Diretor } from '../../../models/diretor/diretor';
 import { DiretorService } from '../../../services/diretor/diretor.service';
-import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.component';
+import { DialogExcluirComponent } from '../../dialogs/dialog-excluir/dialog-excluir.component';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 @Component({

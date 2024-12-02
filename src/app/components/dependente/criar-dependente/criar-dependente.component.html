@@ -1,0 +1,57 @@
+<!-- <app-cadastro-template 
+    [tipo]="'Classe'" 
+    [rotaCancelar]="'/classe'">
+</app-cadastro-template> -->
+
+<div class="container">
+    <h2>{{tipo}} Dependente</h2>
+
+    <div class="formulario">
+        <form #dependenteForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome:</mat-label>
+                    <input matInput [(ngModel)]="dependente.nome" name="nome" required>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Data de Nascimento:</mat-label>
+                    <input matInput [(ngModel)]="dependente.dataNascimento" name="dtNasc" required type="date">
+                </mat-form-field>
+            </div>   
+            
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Sexo:</mat-label>
+                    <input matInput [(ngModel)]="dependente.sexo" name="sexo" required>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Selecione o sócio</mat-label>
+                    <mat-select [(ngModel)]="dependente.socio.id" name="titulo" required>
+                        @for (socios of sociosList; track socios) {
+                        <mat-option [value]="socios.id">{{socios.nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/socio']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="dependenteForm.invalid">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -27,9 +27,9 @@
 
             <!-- Coluna Classe/Data Devolução -->
             <ng-container matColumnDef="prazoDevolucao">
-                <mat-header-cell *matHeaderCellDef> Data Devolução </mat-header-cell>
-                <mat-cell *matCellDef="let classe" class="classe-data-devolucao">
-                    {{ classe.prazoDevolucao | date:'dd/MM/yyyy' }} 
+                <mat-header-cell *matHeaderCellDef> Prazo de Devolução </mat-header-cell>
+                <mat-cell *matCellDef="let classe" class="classe-prazo-devolucao">
+                    {{ classe.prazoDevolucao }} dias
                 </mat-cell>
             </ng-container>
 

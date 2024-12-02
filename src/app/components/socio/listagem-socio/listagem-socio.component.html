@@ -1,0 +1,56 @@
+<div class="container">
+    <mat-card>
+        <div class="headerTable">
+            <mat-card-title>Listagem de Sócios</mat-card-title>
+
+            <a [routerLink]="['/cadastroSocio']" mat-fab style="background-color: white;">
+                Nova Sócio
+                <mat-icon style="color: black;">add_circle_outline</mat-icon>
+            </a>
+        </div>
+
+        <mat-table [dataSource]="socios" class="mat-elevation-z8">
+
+            <!-- Coluna do nome do classe -->
+            <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="socio-nome">
+                    {{ socio.nome }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="socio-ativo">
+                    {{ socio.ativo ? 'Ativo' : 'Inativo' }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna dos botões de ação -->
+            <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let socio" class="acoes" style="justify-content: center;">
+                    
+                    <!-- alterar status -->
+                    <button mat-icon-button
+                        (click)="openDialogStatus(socio, socio.ativo ? 'desativar' : 'ativar')">
+                        <mat-icon>{{ socio.ativo ? 'cancel' : 'check_circle' }}</mat-icon>
+                    </button>
+
+                    <a [routerLink]="['/cadastroSocio', socio.id]" mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    
+                    <button mat-icon-button color="warn" (click)="openDialog(socio)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                </mat-cell>
+            </ng-container>
+
+            <!-- Header e linhas da tabela -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card>
+</div>

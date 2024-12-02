@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 import { Ator } from '../../../models/ator/ator';
 import { AtorService } from '../../../services/ator/ator.service';
-import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.component';
+import { DialogExcluirComponent } from '../../dialogs/dialog-excluir/dialog-excluir.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Locacao } from '../../../models/locacao/locacao';

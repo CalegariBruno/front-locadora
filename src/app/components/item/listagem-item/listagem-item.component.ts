@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
-import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.component';
+import { DialogExcluirComponent } from '../../dialogs/dialog-excluir/dialog-excluir.component';
 
 @Component({
   selector: 'app-listagem-item',

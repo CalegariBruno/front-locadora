@@ -1,0 +1,67 @@
+<!-- <app-cadastro-template 
+    [tipo]="'Classe'" 
+    [rotaCancelar]="'/classe'">
+</app-cadastro-template> -->
+
+<div class="container">
+    <h2>{{tipo}} Sócio</h2>
+
+    <div class="formulario">
+        <form #socioForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome:</mat-label>
+                    <input matInput [(ngModel)]="socio.nome" name="nome" required>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Data de Nascimento:</mat-label>
+                    <input matInput [(ngModel)]="socio.dataNascimento" name="valor" required type="date">
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>CPF:</mat-label>
+                    <input matInput [(ngModel)]="socio.cpf" name="cpf" required>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Endereço:</mat-label>
+                    <input matInput [(ngModel)]="socio.endereco" name="endereco" required>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Telefone:</mat-label>
+                    <input matInput [(ngModel)]="socio.telefone" name="telefone" required>
+                </mat-form-field>
+            </div>
+
+            <div class="insere">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Sexo:</mat-label>
+                    <input matInput [(ngModel)]="socio.sexo" name="sexo" required>
+                </mat-form-field>
+            </div>
+
+            <div class="botoes">
+                <div class="btnCancelar">
+                    <a [routerLink]="['/socio']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+                </div>
+
+                <div class="btnSalvar">
+                    <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="socioForm.invalid">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -9,7 +9,7 @@ import { TituloService } from '../../../services/titulo/titulo.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Titulo } from '../../../models/titulo/titulo';
-import { DialogExcluirComponent } from '../../dialog-excluir/dialog-excluir.component';
+import { DialogExcluirComponent } from '../../dialogs/dialog-excluir/dialog-excluir.component';
 
 @Component({
   selector: 'app-listagem-titulo',
