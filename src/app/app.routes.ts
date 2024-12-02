@@ -86,7 +86,7 @@ export const routes: Routes = [
     { path: 'locacao', component: RegistrarLocacaoComponent },
     { path: 'locacao/:id', component: RegistrarLocacaoComponent },
     { path: 'devolucao', component: ListarLocacoesComponent },
-    { path: 'registrarDevolucao', component: RegistrarDevolucaoComponent },
+    { path: 'registrarDevolucao/:id', component: RegistrarDevolucaoComponent },
     { path: 'socio', component: ListagemSocioComponent },
     { path: 'cadastroSocio', component: CadastroSocioComponent },
     { path: 'cadastroSocio/:id', component: CadastroSocioComponent },
