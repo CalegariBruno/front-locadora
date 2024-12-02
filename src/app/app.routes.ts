@@ -13,6 +13,10 @@ import { CadastroItemComponent } from './components/item/cadastro-item/cadastro-
 import { RegistrarLocacaoComponent } from './components/locacao/registrar-locacao/registrar-locacao.component';
 import { ListarLocacoesComponent } from './components/devolucao/listar-locacoes/listar-locacoes.component';
 import { RegistrarDevolucaoComponent } from './components/devolucao/registrar-devolucao/registrar-devolucao.component';
+import { ListagemSocioComponent } from './components/socio/listagem-socio/listagem-socio.component';
+import { CadastroSocioComponent } from './components/socio/cadastro-socio/cadastro-socio.component';
+import { ListagemDependentesComponent } from './components/dependente/listagem-dependentes/listagem-dependentes.component';
+import { CadastroDependenteComponent } from './components/dependente/criar-dependente/criar-dependente.component';
 
 export const routes: Routes = [
     {
@@ -82,6 +86,12 @@ export const routes: Routes = [
     { path: 'locacao', component: RegistrarLocacaoComponent },
     { path: 'locacao/:id', component: RegistrarLocacaoComponent },
     { path: 'devolucao', component: ListarLocacoesComponent },
-    { path: 'registrarDevolucao', component: RegistrarDevolucaoComponent }
+    { path: 'registrarDevolucao', component: RegistrarDevolucaoComponent },
+    { path: 'socio', component: ListagemSocioComponent },
+    { path: 'cadastroSocio', component: CadastroSocioComponent },
+    { path: 'cadastroSocio/:id', component: CadastroSocioComponent },
+    { path: 'dependente', component: ListagemDependentesComponent },
+    { path: 'cadastroDependente', component: CadastroDependenteComponent },
+    { path: 'cadastroDependente/:id', component: CadastroDependenteComponent }
 
 ];

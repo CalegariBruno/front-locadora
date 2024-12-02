@@ -1,0 +1,63 @@
+<div class="container">
+    <mat-card>
+        <div class="headerTable">
+            <mat-card-title>Listagem de Dependentes</mat-card-title>
+
+            <a [routerLink]="['/cadastroDependente']" mat-fab style="background-color: white;">
+                Novo Dependente
+                <mat-icon style="color: black;">add_circle_outline</mat-icon>
+            </a>
+        </div>
+
+        <mat-table [dataSource]="dependentes" class="mat-elevation-z8">
+
+            <!-- Coluna do nome do dependente -->
+            <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let dependente" class="dependente-nome">
+                    {{ dependente.nome }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="socio">
+                <mat-header-cell *matHeaderCellDef> Sócio </mat-header-cell>
+                <mat-cell *matCellDef="let dependente" class="dependente-socio">
+                    {{ dependente.socio.nome }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let dependente" class="dependente-ativo">
+                    {{ dependente.ativo ? 'Ativo' : 'Inativo' }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Coluna dos botões de ação -->
+            <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let dependente" class="acoes" style="justify-content: center;">
+                    
+                    <!-- alterar status -->
+                    <button mat-icon-button
+                        (click)="openDialogStatus(dependente, dependente.ativo ? 'desativar' : 'ativar')">
+                        <mat-icon>{{ dependente.ativo ? 'cancel' : 'check_circle' }}</mat-icon>
+                    </button>
+
+                    <a [routerLink]="['/cadastroDependente', dependente.id]" mat-icon-button color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    
+                    <button mat-icon-button color="warn" (click)="openDialogExcluir(dependente)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                </mat-cell>
+            </ng-container>
+
+            <!-- Header e linhas da tabela -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card>
+</div>

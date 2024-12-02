@@ -16,22 +16,22 @@ export class ClienteService {
 
   // CRIAR SOCIO
   criarSocio(socio: Socio): Observable<Socio> {
-    return this.http.post<Socio>(`${this.url}/criarSocio`, socio);
+    return this.http.post<Socio>(`${this.url}/socio/criar`, socio);
   }
 
   // CRIAR DEPENDENTE
   criarDependente(dependente: Dependente): Observable<Dependente> {
-    return this.http.post<Dependente>(`${this.url}/criarDependente`, dependente);
+    return this.http.post<Dependente>(`${this.url}/dependente/criar`, dependente);
   }
 
   // EDITAR SOCIO
   editarSocio(socio: Socio): Observable<Socio> {
-    return this.http.put<Socio>(`${this.url}/editarSocio/${socio.id}`, socio);
+    return this.http.put<Socio>(`${this.url}/socio/editar/${socio.id}`, socio);
   }
 
   // EDITAR DEPENDENTE
   editarDependente(dependente: Dependente): Observable<Dependente> {
-    return this.http.put<Dependente>(`${this.url}/editarDependente/${dependente.id}`, dependente);
+    return this.http.put<Dependente>(`${this.url}/dependente/editar/${dependente.id}`, dependente);
   }
 
   // MUDAR STATUS SOCIO
