@@ -1,1 +1,28 @@
-<p>registrar-devolucao works!</p>
+<div class="container">
+  
+    <h2> Registrar Devolução</h2>
+  
+    <div class="formulario">
+      <form #devolucaoForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="insere">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Multa:</mat-label>
+            <input matInput [(ngModel)]="devolucao.multa" name="multa" type="number" required>
+          </mat-form-field>
+        </div>
+  
+        <div class="botoes">
+          <div class="btnCancelar">
+            <a [routerLink]="['/devolucao']" mat-raised-button id="cancelar" name="cancelar">Cancelar</a>
+          </div>
+  
+          <div class="btnSalvar">
+            <button mat-raised-button id="salvar" name="salvar" color="primary" [disabled]="devolucaoForm.invalid">
+              Salvar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
