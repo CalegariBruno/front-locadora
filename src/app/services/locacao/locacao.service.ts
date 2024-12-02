@@ -25,8 +25,8 @@ export class LocacaoService {
     }
 
     //CRIAR DEVOLUCAO
-    criarDevolucao(devolucao: Devolucao): Observable<Locacao> {
-        return this.http.post<Locacao>(`${this.url}/efetuarDevolucao`, devolucao);
+    criarDevolucao(devolucao: Devolucao, id: number): Observable<Locacao> {
+        return this.http.post<Locacao>(`${this.url}/efetuarDevolucao/${id}`, devolucao);
     }
 
     // EDITAR LOCACAO
