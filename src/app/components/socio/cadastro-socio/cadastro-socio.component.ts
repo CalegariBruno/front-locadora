@@ -10,6 +10,12 @@ import { ToastrService } from 'ngx-toastr';
 import { Socio } from '../../../models/cliente/socio/socio';
 import { ClienteService } from '../../../services/cliente/cliente.service';
 import { Cliente } from '../../../models/cliente/cliente';
+import { MatSelectModule } from '@angular/material/select';
+
+interface TiposSexo {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-cadastro-socio',
@@ -19,6 +25,7 @@ import { Cliente } from '../../../models/cliente/cliente';
     MatInputModule,
     FormsModule,
     MatButtonModule,
+    MatSelectModule,
     RouterLink
   ],
   templateUrl: './cadastro-socio.component.html',
@@ -37,6 +44,10 @@ export class CadastroSocioComponent implements OnInit {
   };
   id!: number;
   tipo!: string;
+  tiposSexo: TiposSexo[] = [
+    { value: 'Masculino', viewValue: 'Masculino' },
+    { value: 'Feminino', viewValue: 'Feminino' },
+  ];
 
   constructor(
     private clienteService: ClienteService,

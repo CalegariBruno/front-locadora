@@ -42,12 +42,16 @@
                     <mat-label>Telefone:</mat-label>
                     <input matInput [(ngModel)]="socio.telefone" name="telefone" required>
                 </mat-form-field>
-            </div>
+            </div>            
 
             <div class="insere">
                 <mat-form-field style="width: 100%;">
-                    <mat-label>Sexo:</mat-label>
-                    <input matInput [(ngModel)]="socio.sexo" name="sexo" required>
+                    <mat-label>Selecione o sexo</mat-label>
+                    <mat-select [(ngModel)]="socio.sexo" name="tipoItem" required>
+                        @for (tipos of tiposSexo; track tipos) {
+                        <mat-option [value]="tipos.value">{{tipos.viewValue}}</mat-option>
+                        }
+                    </mat-select>
                 </mat-form-field>
             </div>
 
