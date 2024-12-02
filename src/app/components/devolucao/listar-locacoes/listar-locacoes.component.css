@@ -1,39 +1,49 @@
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  mat-card {
-    width: 90%;
-    padding: 16px;
-  }
-  
-  .headerTable {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .headerTable a {
-    background-color: white;
-    width: 150px;
-    color: black;
-  }
-  
-  mat-table {
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .classe-nome {
-    justify-content: flex-start;
-    /* Alinha o nome à esquerda */
-  }
-  
-  /* .acoes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+mat-card {
+  width: 90%;
+  padding: 16px;
+}
+
+.headerTable {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerTable a {
+  background-color: white;
+  width: 150px;
+  color: black;
+}
+
+mat-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.classe-nome {
+  justify-content: flex-start;
+  /* Alinha o nome à esquerda */
+}
+
+.disabled-link {
+  pointer-events: none;
+  /* Impede interação com o link ou botão */
+  opacity: 0.5;
+  /* Altera a opacidade para mostrar que está desabilitado */
+  cursor: not-allowed;
+  /* Muda o cursor para indicar que a interação não é permitida */
+}
+
+
+/* .acoes {
     display: flex;
     justify-content: flex-end;
     gap: 10px;

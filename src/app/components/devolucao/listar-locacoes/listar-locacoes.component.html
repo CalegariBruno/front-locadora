@@ -50,7 +50,8 @@
             <ng-container matColumnDef="devolucao">
                 <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Devolução </mat-header-cell>
                 <mat-cell *matCellDef="let locacao" class="classe-data-devolucao" style="justify-content: center;">
-                    <a [routerLink]="['/registrarDevolucao']" mat-icon-button color="primary">
+                    <a [routerLink]="['/registrarDevolucao', locacao.id]" mat-icon-button color="primary"
+                        [attr.disabled]="locacao.pago ? true : null" [ngClass]="{'disabled-link': locacao.pago}">
                         <mat-icon>undo</mat-icon>
                     </a>
                 </mat-cell>
@@ -60,12 +61,20 @@
             <ng-container matColumnDef="acoes">
                 <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Ações </mat-header-cell>
                 <mat-cell *matCellDef="let locacao" class="acoes" style="justify-content: center;">
-                    <a [routerLink]="['/locacao', locacao.id]" mat-icon-button color="primary">
+
+                    <!-- Botão Editar -->
+                    <a [routerLink]="['/locacao', locacao.id]" mat-icon-button color="primary"
+                        [attr.disabled]="locacao.pago ? true : null" [ngClass]="{'disabled-link': locacao.pago}">
                         <mat-icon>edit</mat-icon>
                     </a>
-                    <button mat-icon-button color="warn" (click)="openDialog(locacao)">
+
+                    <!-- Botão Excluir -->
+                    <button mat-icon-button color="warn" (click)="openDialog(locacao)" [disabled]="locacao.pago"
+                        [ngClass]="{'disabled-link': locacao.pago}">
                         <mat-icon>delete</mat-icon>
                     </button>
+
+
                 </mat-cell>
             </ng-container>
 

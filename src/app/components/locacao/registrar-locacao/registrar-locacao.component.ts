@@ -103,8 +103,8 @@ export class RegistrarLocacaoComponent implements OnInit {
       if (this.locacao.item.id > 0 && this.locacao.cliente!.id > 0) {
         this.locacaoService.criarLocacao(this.locacao).subscribe({
           next: () => {
-            this.toastrService.success('Locação criada com sucesso!');
-            this.router.navigate(['/locacao']);
+            this.router.navigate(['/devolucao']);
+            this.toastrService.success('Locação criada com sucesso!');            
           },
           error: (err) => {
             console.error('Erro ao criar locação!', err);
