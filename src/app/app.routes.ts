@@ -17,11 +17,12 @@ import { ListagemSocioComponent } from './components/socio/listagem-socio/listag
 import { CadastroSocioComponent } from './components/socio/cadastro-socio/cadastro-socio.component';
 import { ListagemDependentesComponent } from './components/dependente/listagem-dependentes/listagem-dependentes.component';
 import { CadastroDependenteComponent } from './components/dependente/criar-dependente/criar-dependente.component';
+import { PaginaPesquisaComponent } from './components/pagina-pesquisa/pagina-pesquisa/pagina-pesquisa.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: AppComponent
+        component: PaginaPesquisaComponent
     },
     {
         path: 'ator',

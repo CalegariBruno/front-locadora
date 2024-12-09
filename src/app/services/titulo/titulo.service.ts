@@ -37,4 +37,19 @@ export class TituloService {
     return this.http.get<Titulo>(`${this.url}/buscar/${id}`);
   }
 
+  // BUSCAR TITULO POR NOME
+  buscarTituloPorNome(nome: string): Observable<Titulo[]> {
+    return this.http.get<Titulo[]>(`${this.url}/buscar/nome/${nome}`);
+  }
+
+  // BUSCAR TITULO POR CATEGORIA
+  buscarTituloPorCategoria(categoria: string): Observable<Titulo[]> {
+    return this.http.get<Titulo[]>(`${this.url}/buscar/categoria/${categoria}`);
+  }
+
+  // BUSCAR TITULO POR ATORES
+  buscarTituloPorAtor(ator: string): Observable<Titulo[]> {
+    return this.http.get<Titulo[]>(`${this.url}/buscar/ator/${ator}`);
+  }
+
 }

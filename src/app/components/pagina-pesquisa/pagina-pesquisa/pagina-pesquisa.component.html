@@ -1,0 +1,78 @@
+<div class="pagina">
+
+    <div class="formulario">
+        <form #pesquisaForm="ngForm" (ngSubmit)="onSubmit()" style="display: flex; justify-content: space-between;">
+          <!-- Campo de pesquisa -->
+          <mat-form-field class="input-pesquisa">
+            <mat-label>Pesquisa</mat-label>
+            <input matInput [(ngModel)]="pesquisa" name="tituloPesquisado" required />
+          </mat-form-field>  
+      
+          <!-- Campo de seleção -->
+          <mat-form-field class="input-pesquisa">
+            <mat-label>Pesquisar por:</mat-label>
+            <mat-select [(ngModel)]="tipoSelecionado" name="tipo" required>
+              <mat-option *ngFor="let tipo of tiposPesquisa" [value]="tipo">{{ tipo }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <!-- Botão -->
+          <button mat-fab class="botao-pesquisa">
+            <mat-icon>search</mat-icon>
+          </button>
+        </form>
+    </div>
+    
+    <table mat-table [dataSource]="titulos" class="mat-elevation-z8">
+        
+        <!-- Coluna nome -->
+        <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let titulo"> {{titulo.nome}} </td>
+        </ng-container>
+        
+        <!-- Coluna ano -->
+        <ng-container matColumnDef="ano">
+            <th mat-header-cell *matHeaderCellDef> Ano </th>
+            <td mat-cell *matCellDef="let titulo"> {{titulo.ano}} </td>
+        </ng-container>
+        
+        <!-- Coluna categoria -->
+        <ng-container matColumnDef="categoria">
+            <th mat-header-cell *matHeaderCellDef> Categoria </th>
+            <td mat-cell *matCellDef="let titulo"> {{titulo.categoria}} </td>
+        </ng-container>
+        
+        <!-- Coluna atores -->
+        <ng-container matColumnDef="atores">
+            <th mat-header-cell *matHeaderCellDef> Atores </th>
+            <td mat-cell *matCellDef="let titulo">
+            <!-- Iterando sobre o array de atores e exibindo seus nomes -->
+            <span *ngFor="let ator of titulo.atores; let isLast = last">
+                {{ ator.nome }}<span *ngIf="!isLast">, </span>
+            </span>
+            </td>
+        </ng-container>
+  
+        
+        <!-- Coluna diretor -->
+        <ng-container matColumnDef="diretor">
+            <th mat-header-cell *matHeaderCellDef> Diretor </th>
+            <td mat-cell *matCellDef="let titulo"> {{titulo.diretor.nome}} </td>
+        </ng-container>
+    
+        <!-- Coluna classe -->
+        <ng-container matColumnDef="classe">
+            <th mat-header-cell *matHeaderCellDef> Classe </th>
+            <td mat-cell *matCellDef="let titulo"> {{titulo.classe.nome}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
+
+
+
+  
